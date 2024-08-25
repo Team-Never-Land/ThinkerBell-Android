@@ -3,9 +3,10 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("kotlin-kapt")
     id("kotlin-parcelize")
     id("com.google.gms.google-services")
+    alias(libs.plugins.googleKsp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -90,4 +91,8 @@ dependencies {
     implementation(libs.androidx.work.runtime.ktx)
 
     implementation(libs.flow.layout)
+
+    // Hilt
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
 }
