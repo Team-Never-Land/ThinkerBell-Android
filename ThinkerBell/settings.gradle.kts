@@ -20,5 +20,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "ThinkerBell"
-include(":app")
- 
+include(":core")
+include(":presentation")
+include(":data")
+include(":domain")
