@@ -50,6 +50,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -86,5 +89,5 @@ dependencies {
     // WorkManager
     implementation(libs.androidx.work.runtime.ktx)
 
-    implementation("com.nex3z:flow-layout:1.3.3")
+    implementation(libs.flow.layout)
 }
