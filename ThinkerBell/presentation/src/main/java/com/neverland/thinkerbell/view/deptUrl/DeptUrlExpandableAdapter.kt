@@ -4,11 +4,11 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.neverland.domain.model.group.Group
+import com.neverland.domain.model.univ.DeptUrl
 import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.databinding.ItemDeptUrlBinding
 import com.neverland.thinkerbell.databinding.ItemGroupBinding
-import com.neverland.domain.model.group.Group
-import com.neverland.domain.model.univ.DeptUrl
 import com.neverland.thinkerbell.view.OnRvItemClickListener
 
 @SuppressLint("NotifyDataSetChanged")

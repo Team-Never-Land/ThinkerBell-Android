@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.neverland.thinkerbell.databinding.ItemHomeNoticeBinding
 import com.neverland.domain.model.notice.NoticeItem
+import com.neverland.thinkerbell.databinding.ItemHomeNoticeBinding
 
 class HomeNoticeAdapter(private val notices: List<NoticeItem.CommonNotice>) :
     RecyclerView.Adapter<HomeNoticeAdapter.NoticeViewHolder>() {

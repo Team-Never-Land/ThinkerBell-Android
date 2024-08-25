@@ -1,14 +1,11 @@
 package com.neverland.data.datasourceImpl
 
-import com.neverland.data.datasource.AlarmDataSource
 import com.neverland.data.datasource.UnivDataSource
 import com.neverland.data.remote.model.BaseResponse
-import com.neverland.data.remote.model.alarm.AlarmDTO
 import com.neverland.data.remote.model.univ.AcademicScheduleResDTO
 import com.neverland.data.remote.model.univ.BannerResDTO
 import com.neverland.data.remote.model.univ.DeptContactResDTO
 import com.neverland.data.remote.model.univ.DeptUrlResDTO
-import com.neverland.data.remote.service.AlarmService
 import com.neverland.data.remote.service.UnivService
 import retrofit2.Response
 import javax.inject.Inject

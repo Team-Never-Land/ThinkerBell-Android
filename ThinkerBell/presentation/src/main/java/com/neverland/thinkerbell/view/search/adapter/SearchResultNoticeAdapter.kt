@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.neverland.thinkerbell.databinding.ItemNoticeBinding
-import com.neverland.thinkerbell.databinding.ItemNoticeJobBinding
 import com.neverland.domain.enums.NoticeType
 import com.neverland.domain.model.notice.NoticeItem
+import com.neverland.thinkerbell.databinding.ItemNoticeBinding
+import com.neverland.thinkerbell.databinding.ItemNoticeJobBinding
 import com.neverland.thinkerbell.view.OnRvItemClickListener
 
 class SearchResultNoticeAdapter(

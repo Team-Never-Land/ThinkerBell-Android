@@ -5,13 +5,13 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.neverland.thinkerbell.R
-import com.neverland.thinkerbell.databinding.FragmentKeywordManageBinding
 import com.neverland.domain.model.keyword.Keyword
+import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.base.BaseFragment
+import com.neverland.thinkerbell.databinding.FragmentKeywordManageBinding
 import com.neverland.thinkerbell.utils.UiState
-import com.neverland.thinkerbell.view.OnRvItemClickListener
 import com.neverland.thinkerbell.view.HomeActivity
+import com.neverland.thinkerbell.view.OnRvItemClickListener
 import com.neverland.thinkerbell.view.myPage.adapter.KeywordManagementAdapter
 import dagger.hilt.android.AndroidEntryPoint
 

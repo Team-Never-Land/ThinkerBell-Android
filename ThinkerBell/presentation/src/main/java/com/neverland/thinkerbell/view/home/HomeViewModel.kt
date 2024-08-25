@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.neverland.domain.model.notice.RecentNotices
+import com.neverland.domain.model.univ.Banner
 import com.neverland.domain.usecase.alarm.CheckAllAlarmUseCase
 import com.neverland.domain.usecase.notice.GetRecentNoticesUseCase
 import com.neverland.domain.usecase.univ.GetBannerUseCase
-import com.neverland.domain.model.notice.RecentNotices
-import com.neverland.domain.model.univ.Banner
 import com.neverland.thinkerbell.base.ThinkerBellApplication.Companion.application
 import com.neverland.thinkerbell.utils.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel

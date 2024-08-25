@@ -8,8 +8,8 @@ import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.neverland.thinkerbell.R
-import com.neverland.thinkerbell.databinding.FragmentSearchBinding
 import com.neverland.thinkerbell.base.BaseFragment
+import com.neverland.thinkerbell.databinding.FragmentSearchBinding
 import com.neverland.thinkerbell.utils.UiState
 import com.neverland.thinkerbell.view.HomeActivity
 import com.neverland.thinkerbell.view.search.adapter.SearchRecentWordAdapter

@@ -1,14 +1,11 @@
 package com.neverland.data.datasourceImpl
 
-import com.neverland.data.datasource.AlarmDataSource
 import com.neverland.data.datasource.NoticeDataSource
 import com.neverland.data.remote.model.BaseResponse
 import com.neverland.data.remote.model.PageableResponse
-import com.neverland.data.remote.model.alarm.AlarmDTO
 import com.neverland.data.remote.model.notice.CommonNoticeDTO
 import com.neverland.data.remote.model.notice.JobTrainingNoticeDTO
 import com.neverland.data.remote.model.notice.SearchNoticeResultDTO
-import com.neverland.data.remote.service.AlarmService
 import com.neverland.data.remote.service.NoticeService
 import retrofit2.Response
 import javax.inject.Inject

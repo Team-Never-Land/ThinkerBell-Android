@@ -1,17 +1,13 @@
 package com.neverland.data.di
 
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
 import com.neverland.data.datasource.AlarmDataSource
 import com.neverland.data.datasource.BookmarkDataSource
-import com.neverland.data.datasource.DataStoreLocaleDataSource
 import com.neverland.data.datasource.KeywordDataSource
 import com.neverland.data.datasource.NoticeDataSource
 import com.neverland.data.datasource.UnivDataSource
 import com.neverland.data.datasource.UserDataSource
 import com.neverland.data.datasourceImpl.AlarmDataSourceImpl
 import com.neverland.data.datasourceImpl.BookmarkDataSourceImpl
-import com.neverland.data.datasourceImpl.DataStoreLocalDataSourceImpl
 import com.neverland.data.datasourceImpl.KeywordDataSourceImpl
 import com.neverland.data.datasourceImpl.NoticeDataSourceImpl
 import com.neverland.data.datasourceImpl.UnivDataSourceImpl

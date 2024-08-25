@@ -1,11 +1,10 @@
 package com.neverland.thinkerbell.view.home
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.neverland.thinkerbell.R
-import com.neverland.thinkerbell.databinding.FragmentHomeNoticeBinding
 import com.neverland.domain.model.notice.NoticeItem
 import com.neverland.thinkerbell.base.BaseFragment
 import com.neverland.thinkerbell.custom.CustomDividerDecoration
+import com.neverland.thinkerbell.databinding.FragmentHomeNoticeBinding
 import com.neverland.thinkerbell.view.home.adapter.HomeNoticeAdapter
 import dagger.hilt.android.AndroidEntryPoint
 

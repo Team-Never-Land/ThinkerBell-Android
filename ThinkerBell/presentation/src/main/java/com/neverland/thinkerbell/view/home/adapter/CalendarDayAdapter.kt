@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.TextViewCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.neverland.thinkerbell.R
-import com.neverland.core.utils.LoggerUtil
-import com.neverland.thinkerbell.databinding.ItemCalendarDayBinding
 import com.neverland.domain.model.univ.AcademicSchedule
+import com.neverland.thinkerbell.R
+import com.neverland.thinkerbell.databinding.ItemCalendarDayBinding
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

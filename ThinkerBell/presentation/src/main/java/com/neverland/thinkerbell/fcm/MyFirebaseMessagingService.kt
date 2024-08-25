@@ -16,8 +16,8 @@ import androidx.work.WorkerParameters
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.neverland.thinkerbell.R
 import com.neverland.core.utils.LoggerUtil
+import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.view.HomeActivity
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {

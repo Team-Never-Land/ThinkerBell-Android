@@ -7,9 +7,8 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.neverland.thinkerbell.R
-import com.neverland.core.utils.LoggerUtil
 import com.neverland.domain.model.univ.AcademicSchedule
+import com.neverland.thinkerbell.R
 import java.util.Calendar
 import java.util.Date
 

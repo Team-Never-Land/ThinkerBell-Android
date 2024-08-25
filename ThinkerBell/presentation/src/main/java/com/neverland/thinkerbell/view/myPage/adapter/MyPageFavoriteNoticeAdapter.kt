@@ -3,8 +3,8 @@ package com.neverland.thinkerbell.view.myPage.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.neverland.thinkerbell.databinding.ItemMyNoticeBinding
 import com.neverland.domain.model.notice.RecentBookmarkNotice
+import com.neverland.thinkerbell.databinding.ItemMyNoticeBinding
 import com.neverland.thinkerbell.view.OnRvItemClickListener
 
 class MyPageFavoriteNoticeAdapter(private val notices: List<RecentBookmarkNotice>) :

@@ -6,13 +6,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.neverland.thinkerbell.R
 import com.neverland.core.utils.LoggerUtil
-import com.neverland.thinkerbell.databinding.FragmentAlarmNoticeBinding
 import com.neverland.domain.enums.NoticeType
 import com.neverland.domain.model.alarm.Alarm
 import com.neverland.thinkerbell.base.BaseFragment
 import com.neverland.thinkerbell.custom.CustomDividerDecoration
+import com.neverland.thinkerbell.databinding.FragmentAlarmNoticeBinding
 import com.neverland.thinkerbell.utils.UiState
 import com.neverland.thinkerbell.view.OnRvItemClickListener
 import com.neverland.thinkerbell.view.alarm.adapter.AlarmNoticeAdapter

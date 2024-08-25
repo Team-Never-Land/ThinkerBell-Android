@@ -1,10 +1,8 @@
 package com.neverland.data.repository
 
 import com.neverland.data.datasource.AlarmDataSource
-import com.neverland.data.remote.service.AlarmService
 import com.neverland.domain.model.alarm.Alarm
 import com.neverland.domain.repository.AlarmRepository
-import org.json.JSONObject
 import javax.inject.Inject
 
 class AlarmRepositoryImpl @Inject constructor(

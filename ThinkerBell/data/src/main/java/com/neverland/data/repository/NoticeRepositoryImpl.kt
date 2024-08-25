@@ -1,15 +1,12 @@
 package com.neverland.data.repository
 
 import com.neverland.data.datasource.NoticeDataSource
-import com.neverland.data.datasourceImpl.NoticeDataSourceImpl
 import com.neverland.domain.enums.NoticeType
 import com.neverland.domain.model.PageableNotice
 import com.neverland.domain.model.notice.AllNotices
 import com.neverland.domain.model.notice.NoticeItem
 import com.neverland.domain.model.notice.RecentNotices
 import com.neverland.domain.repository.NoticeRepository
-import okhttp3.RequestBody.Companion.toRequestBody
-import org.json.JSONObject
 import javax.inject.Inject
 
 class NoticeRepositoryImpl @Inject constructor(

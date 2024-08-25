@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.neverland.domain.model.group.Group
+import com.neverland.domain.model.group.SubGroup
+import com.neverland.domain.model.univ.DeptContact
 import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.databinding.ItemContactBinding
 import com.neverland.thinkerbell.databinding.ItemGroupBinding
 import com.neverland.thinkerbell.databinding.ItemSubGroupBinding
-import com.neverland.domain.model.group.Group
-import com.neverland.domain.model.group.SubGroup
-import com.neverland.domain.model.univ.DeptContact
 import com.neverland.thinkerbell.view.OnRvItemClickListener
 
 @SuppressLint("NotifyDataSetChanged")

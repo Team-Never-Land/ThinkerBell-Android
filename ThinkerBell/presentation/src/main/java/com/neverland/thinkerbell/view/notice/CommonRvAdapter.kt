@@ -6,11 +6,11 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.neverland.domain.enums.NoticeType
+import com.neverland.domain.model.notice.NoticeItem
 import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.databinding.ItemNoticeBinding
 import com.neverland.thinkerbell.databinding.ItemNoticeJobBinding
-import com.neverland.domain.enums.NoticeType
-import com.neverland.domain.model.notice.NoticeItem
 import com.neverland.thinkerbell.view.OnRvItemClickListener
 
 class CommonRvAdapter(private val noticeType: NoticeType) : ListAdapter<NoticeItem, RecyclerView.ViewHolder>(

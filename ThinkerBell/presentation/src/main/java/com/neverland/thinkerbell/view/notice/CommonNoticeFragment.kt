@@ -14,16 +14,16 @@ import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.neverland.domain.enums.NoticeType
-import com.neverland.thinkerbell.R
 import com.neverland.core.utils.LoggerUtil
-import com.neverland.thinkerbell.databinding.FragmentCommonNoticeBinding
+import com.neverland.domain.enums.NoticeType
 import com.neverland.domain.model.notice.NoticeItem
+import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.base.BaseFragment
 import com.neverland.thinkerbell.custom.CustomDividerDecoration
+import com.neverland.thinkerbell.databinding.FragmentCommonNoticeBinding
 import com.neverland.thinkerbell.utils.UiState
-import com.neverland.thinkerbell.view.OnRvItemClickListener
 import com.neverland.thinkerbell.view.HomeActivity
+import com.neverland.thinkerbell.view.OnRvItemClickListener
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Pattern
 

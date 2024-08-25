@@ -3,7 +3,6 @@ package com.neverland.data.remote.service
 import com.neverland.data.remote.model.BaseResponse
 import com.neverland.data.remote.model.notice.BookmarkNoticeDTO
 import com.neverland.data.remote.model.notice.RecentBookmarkNoticeDTO
-import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.DELETE
 import retrofit2.http.GET

@@ -1,24 +1,23 @@
 package com.neverland.thinkerbell.view.home
 
-import android.os.Handler
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import com.google.android.material.tabs.TabLayoutMediator
 import com.neverland.core.utils.LoggerUtil
-import com.neverland.thinkerbell.R
-import com.neverland.thinkerbell.databinding.FragmentHomeBinding
 import com.neverland.domain.model.notice.RecentNotices
 import com.neverland.domain.model.univ.Banner
+import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.base.BaseFragment
+import com.neverland.thinkerbell.databinding.FragmentHomeBinding
 import com.neverland.thinkerbell.utils.UiState
+import com.neverland.thinkerbell.view.HomeActivity
 import com.neverland.thinkerbell.view.alarm.AlarmFragment
 import com.neverland.thinkerbell.view.contact.ContactsFragment
 import com.neverland.thinkerbell.view.deptUrl.DeptUrlFragment
 import com.neverland.thinkerbell.view.home.adapter.HomeBannerAdapter
 import com.neverland.thinkerbell.view.home.adapter.HomeCategoryVPAdapter
 import com.neverland.thinkerbell.view.search.SearchFragment
-import com.neverland.thinkerbell.view.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

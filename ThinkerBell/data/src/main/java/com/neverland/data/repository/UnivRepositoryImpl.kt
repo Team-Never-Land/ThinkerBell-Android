@@ -1,12 +1,11 @@
 package com.neverland.data.repository
 
 import com.neverland.data.datasource.UnivDataSource
-import com.neverland.domain.model.univ.DeptUrl
 import com.neverland.domain.model.univ.AcademicSchedule
 import com.neverland.domain.model.univ.Banner
 import com.neverland.domain.model.univ.DeptContact
+import com.neverland.domain.model.univ.DeptUrl
 import com.neverland.domain.repository.UnivRepository
-import org.json.JSONObject
 import javax.inject.Inject
 
 class UnivRepositoryImpl @Inject constructor(

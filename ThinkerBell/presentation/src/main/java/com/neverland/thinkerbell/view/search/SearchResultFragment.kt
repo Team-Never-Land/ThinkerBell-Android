@@ -10,11 +10,11 @@ import android.view.inputmethod.EditorInfo
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.google.android.material.tabs.TabLayoutMediator
-import com.neverland.thinkerbell.R
-import com.neverland.thinkerbell.databinding.FragmentSearchResultBinding
 import com.neverland.domain.enums.NoticeType
 import com.neverland.domain.model.notice.NoticeItem
+import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.base.BaseFragment
+import com.neverland.thinkerbell.databinding.FragmentSearchResultBinding
 import com.neverland.thinkerbell.utils.UiState
 import com.neverland.thinkerbell.view.HomeActivity
 import com.neverland.thinkerbell.view.search.adapter.SearchResultVPAdapter

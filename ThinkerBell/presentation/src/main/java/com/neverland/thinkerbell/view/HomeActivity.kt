@@ -2,11 +2,11 @@ package com.neverland.thinkerbell.view
 
 import android.view.View
 import com.neverland.thinkerbell.R
-import com.neverland.thinkerbell.databinding.ActivityHomeBinding
 import com.neverland.thinkerbell.base.BaseActivity
+import com.neverland.thinkerbell.databinding.ActivityHomeBinding
+import com.neverland.thinkerbell.view.category.CategoryFragment
 import com.neverland.thinkerbell.view.home.HomeFragment
 import com.neverland.thinkerbell.view.myPage.MyPageFragment
-import com.neverland.thinkerbell.view.category.CategoryFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

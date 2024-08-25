@@ -4,11 +4,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.neverland.thinkerbell.R
-import com.neverland.thinkerbell.databinding.FragmentHomeCalendarBinding
 import com.neverland.domain.model.univ.AcademicSchedule
 import com.neverland.thinkerbell.base.BaseFragment
 import com.neverland.thinkerbell.custom.CustomLongDividerItemDecoration
+import com.neverland.thinkerbell.databinding.FragmentHomeCalendarBinding
 import com.neverland.thinkerbell.utils.UiState
 import com.neverland.thinkerbell.view.OnRvItemClickListener
 import com.neverland.thinkerbell.view.home.adapter.CalendarMonthAdapter

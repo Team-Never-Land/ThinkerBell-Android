@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.neverland.thinkerbell.databinding.ItemCategoryBinding
 import com.neverland.domain.enums.NoticeType
+import com.neverland.thinkerbell.databinding.ItemCategoryBinding
 import com.neverland.thinkerbell.view.OnRvItemClickListener
 import java.util.Collections
 

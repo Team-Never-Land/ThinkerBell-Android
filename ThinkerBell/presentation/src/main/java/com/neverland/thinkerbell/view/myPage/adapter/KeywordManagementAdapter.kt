@@ -3,8 +3,8 @@ package com.neverland.thinkerbell.view.myPage.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.neverland.thinkerbell.databinding.ItemKeywordManagementBinding
 import com.neverland.domain.model.keyword.Keyword
+import com.neverland.thinkerbell.databinding.ItemKeywordManagementBinding
 import com.neverland.thinkerbell.view.OnRvItemClickListener
 
 class KeywordManagementAdapter(

@@ -3,7 +3,6 @@ package com.neverland.data.repository
 import com.neverland.data.datasource.KeywordDataSource
 import com.neverland.domain.model.keyword.Keyword
 import com.neverland.domain.repository.KeywordRepository
-import org.json.JSONObject
 import javax.inject.Inject
 
 class KeywordRepositoryImpl @Inject constructor(

@@ -1,12 +1,10 @@
 package com.neverland.data.repository
 
 import com.neverland.data.datasource.BookmarkDataSource
-import com.neverland.data.remote.service.BookmarkService
 import com.neverland.domain.model.notice.BookmarkNotice
 import com.neverland.domain.model.notice.NoticeItem
 import com.neverland.domain.model.notice.RecentBookmarkNotice
 import com.neverland.domain.repository.BookmarkRepository
-import org.json.JSONObject
 import javax.inject.Inject
 
 class BookmarkRepositoryImpl @Inject constructor(

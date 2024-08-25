@@ -4,14 +4,14 @@ import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import com.google.android.material.tabs.TabLayoutMediator
-import com.neverland.thinkerbell.R
-import com.neverland.thinkerbell.databinding.FragmentAlarmBinding
 import com.neverland.domain.model.keyword.Keyword
+import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.base.BaseFragment
+import com.neverland.thinkerbell.databinding.FragmentAlarmBinding
 import com.neverland.thinkerbell.utils.UiState
 import com.neverland.thinkerbell.view.HomeActivity
-import com.neverland.thinkerbell.view.myPage.KeywordManageFragment
 import com.neverland.thinkerbell.view.alarm.adapter.AlarmVPAdapter
+import com.neverland.thinkerbell.view.myPage.KeywordManageFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

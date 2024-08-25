@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.neverland.thinkerbell.databinding.ItemHomeBannerBinding
 import com.neverland.domain.model.univ.Banner
+import com.neverland.thinkerbell.databinding.ItemHomeBannerBinding
 
 class HomeBannerAdapter(private val banners: List<Banner>) :
     RecyclerView.Adapter<HomeBannerAdapter.BannerViewHolder>() {

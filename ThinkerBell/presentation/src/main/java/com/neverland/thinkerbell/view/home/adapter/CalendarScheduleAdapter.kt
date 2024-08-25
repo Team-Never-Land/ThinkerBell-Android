@@ -3,8 +3,8 @@ package com.neverland.thinkerbell.view.home.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.neverland.thinkerbell.databinding.ItemCalendarScheduleBinding
 import com.neverland.domain.model.univ.AcademicSchedule
+import com.neverland.thinkerbell.databinding.ItemCalendarScheduleBinding
 import com.neverland.thinkerbell.view.OnRvItemClickListener
 
 class CalendarScheduleAdapter : RecyclerView.Adapter<CalendarScheduleAdapter.ScheduleViewHolder>() {

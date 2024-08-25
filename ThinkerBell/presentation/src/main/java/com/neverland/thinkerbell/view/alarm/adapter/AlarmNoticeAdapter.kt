@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.neverland.thinkerbell.databinding.ItemNoticeBinding
 import com.neverland.domain.model.alarm.Alarm
+import com.neverland.thinkerbell.databinding.ItemNoticeBinding
 import com.neverland.thinkerbell.view.OnRvItemClickListener
 
 

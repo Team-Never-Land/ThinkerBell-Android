@@ -12,9 +12,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.neverland.thinkerbell.databinding.DialogContactBinding
 import com.neverland.domain.model.univ.DeptContact
 import com.neverland.thinkerbell.custom.CustomToast
+import com.neverland.thinkerbell.databinding.DialogContactBinding
 import com.neverland.thinkerbell.utils.DisplayUtils
 
 class ContactDialog(

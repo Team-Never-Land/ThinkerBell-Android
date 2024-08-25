@@ -10,8 +10,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.neverland.thinkerbell.R
-import com.neverland.thinkerbell.databinding.FragmentKeywordAddBinding
 import com.neverland.thinkerbell.base.BaseFragment
+import com.neverland.thinkerbell.databinding.FragmentKeywordAddBinding
 import com.neverland.thinkerbell.utils.UiState
 import com.neverland.thinkerbell.view.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
