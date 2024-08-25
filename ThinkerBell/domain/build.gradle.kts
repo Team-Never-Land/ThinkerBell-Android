@@ -9,5 +9,8 @@ java {
 }
 
 dependencies {
-    implementation(project(":core"))
+    implementation(project(":core", "default"))
+
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.javax.inject)
 }

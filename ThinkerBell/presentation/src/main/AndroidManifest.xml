@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name=".presentation.base.ThinkerBellApplication"
+        android:name=".base.ThinkerBellApplication"
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,7 +16,7 @@
         android:theme="@style/Theme.ThinkerBell"
         android:usesCleartextTraffic="true"
         tools:targetApi="34">
-        <activity android:name=".presentation.view.splash.StartActivity"
+        <activity android:name=".view.splash.StartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,11 +25,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.view.home.HomeActivity" />
+        <activity android:name=".view.HomeActivity" />
 
 
         <service
-            android:name=".presentation.fcm.MyFirebaseMessagingService"
+            android:name=".fcm.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

@@ -1,5 +1,3 @@
-import java.util.Properties
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -21,10 +19,6 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        val properties = Properties()
-        properties.load(project.rootProject.file("local.properties").inputStream())
-        buildConfigField("String", "BASE_URL", "\"${properties.getProperty("BASE_URL")}\"")
     }
 
     buildTypes {
@@ -45,8 +39,6 @@ android {
     }
     buildFeatures {
         viewBinding = true
-        dataBinding = true
-        buildConfig = true
     }
 }
 
@@ -64,25 +56,11 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(libs.logger)
-
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.fragment.ktx)
 
-    implementation(libs.androidx.datastore.preferences)
-
     implementation(libs.glide)
-
-    implementation(libs.androidx.datastore.preferences.v100)
-
-    // Retrofit
-    implementation(libs.retrofit)
-    implementation(libs.converter.gson)
-
-    // LoggingInterceptor
-    implementation(libs.logging.interceptor)
-    implementation(libs.okhttp)
 
     // Fcm
     implementation(libs.firebase.messaging)
