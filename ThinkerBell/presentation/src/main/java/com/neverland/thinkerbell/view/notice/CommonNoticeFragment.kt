@@ -131,7 +131,8 @@ class CommonNoticeFragment(
         }
 
         binding.ibPageRight1.setOnClickListener { viewModel.fetchData(noticeType, viewModel.currentPage.value!! + 1) }
-        binding.ibPageRight2.setOnClickListener { viewModel.fetchData(noticeType, viewModel.currentPage.value!! + 10) }
+//        binding.ibPageRight2.setOnClickListener { viewModel.fetchData(noticeType, viewModel.currentPage.value!! + 10) }
+        binding.ibPageRight2.setOnClickListener { viewModel.fetchData(noticeType, if(viewModel.currentPage.value!! + 10 >= viewModel.totalPage) viewModel.totalPage-1 else viewModel.currentPage.value!! + 10) }
         binding.ibPageLeft1.setOnClickListener { viewModel.fetchData(noticeType, viewModel.currentPage.value!! - 1) }
         binding.ibPageLeft2.setOnClickListener {
             var page = viewModel.currentPage.value!! - 10
@@ -253,8 +254,8 @@ class CommonNoticeFragment(
         when {
             currentPage == 1 -> setClickablePageButtons(1)
             currentPage / 10 == 0 -> setClickablePageButtons(2)
-            currentPage / 10 >= 1 -> setClickablePageButtons(3)
             currentPage == viewModel.totalPage -> setClickablePageButtons(4)
+            currentPage / 10 >= 1 -> setClickablePageButtons(3)
         }
     }
 
