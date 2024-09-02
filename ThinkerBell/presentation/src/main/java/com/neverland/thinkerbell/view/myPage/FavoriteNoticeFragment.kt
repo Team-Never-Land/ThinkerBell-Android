@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.neverland.core.utils.LoggerUtil
 import com.neverland.domain.enums.NoticeType
 import com.neverland.domain.model.notice.NoticeItem
 import com.neverland.thinkerbell.base.BaseFragment
@@ -35,9 +36,9 @@ class FavoriteNoticeFragment(
         setBookmarkClickListener(object : OnRvItemClickListener<Pair<Int, Boolean>> {
             override fun onClick(item: Pair<Int, Boolean>) {
                 if (item.second) {
-                    favoriteNoticeViewModel.postBookmark(item.first, noticeType)
+                    favoriteNoticeViewModel.postBookmark(noticeType, item.first)
                 } else {
-                    favoriteNoticeViewModel.deleteBookmark(item.first, noticeType)
+                    favoriteNoticeViewModel.deleteBookmark(noticeType, item.first)
                 }
             }
         })
@@ -48,16 +49,17 @@ class FavoriteNoticeFragment(
 
     override fun setObserver() {
         super.setObserver()
-        favoriteNoticeViewModel.bookmarkState.observe(viewLifecycleOwner) {
+        favoriteNoticeViewModel.toastState.observe(viewLifecycleOwner) {
             when(it) {
                 is UiState.Loading -> {
 
                 }
                 is UiState.Error -> {
-                    showToast("북마크 수정 실패")
+
                 }
                 is UiState.Success -> {
-                    showToast("북마크 수정 성공")
+                    LoggerUtil.i(it.data)
+                    showToast(it.data)
                 }
                 is UiState.Empty -> {
 
