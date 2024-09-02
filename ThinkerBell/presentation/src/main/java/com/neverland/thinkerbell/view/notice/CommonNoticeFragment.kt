@@ -12,6 +12,7 @@ import android.widget.AdapterView
 import android.widget.ImageButton
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.neverland.core.utils.LoggerUtil
@@ -131,7 +132,6 @@ class CommonNoticeFragment(
         }
 
         binding.ibPageRight1.setOnClickListener { viewModel.fetchData(noticeType, viewModel.currentPage.value!! + 1) }
-//        binding.ibPageRight2.setOnClickListener { viewModel.fetchData(noticeType, viewModel.currentPage.value!! + 10) }
         binding.ibPageRight2.setOnClickListener { viewModel.fetchData(noticeType, if(viewModel.currentPage.value!! + 10 >= viewModel.totalPage) viewModel.totalPage-1 else viewModel.currentPage.value!! + 10) }
         binding.ibPageLeft1.setOnClickListener { viewModel.fetchData(noticeType, viewModel.currentPage.value!! - 1) }
         binding.ibPageLeft2.setOnClickListener {
@@ -179,6 +179,7 @@ class CommonNoticeFragment(
     }
 
     private fun showNoticePage() {
+        viewModel.searchNotice = emptyList()
         binding.groupNoticeSearchView.visibility = View.GONE
         binding.llNoticePage.visibility = View.VISIBLE
         if(spinnerRequiredNotices.contains(noticeType)) setCampusSpinner() else binding.spinnerCampus.visibility = View.GONE
@@ -243,7 +244,6 @@ class CommonNoticeFragment(
                 commonNoticeAdapter.submitList(state.data)
                 binding.groupNoticeSearchView.visibility = View.VISIBLE
                 binding.llNoticePage.visibility = View.GONE
-                binding.spinnerCampus.visibility = View.GONE
                 binding.tvSearchNoticeResult.text = "'${binding.etSearch.text}'이(가) 포함된 공지사항 (${state.data.size}개)"
                 binding.etSearch.text.clear()
             }
@@ -315,8 +315,14 @@ class CommonNoticeFragment(
                 spinnerAdapter.notifyDataSetChanged()
 
                 val value = binding.spinnerCampus.getItemAtPosition(position).toString()
-                commonNoticeAdapter.submitList(emptyList())
-                viewModel.classificationNotice(noticeType, viewModel.currentPage.value!!, value)
+                if(binding.groupNoticeSearchView.isVisible){
+                    if(viewModel.searchNotice.isEmpty()) viewModel.searchNotice = commonNoticeAdapter.currentList.toList()
+                    val data = if(value != "전체") viewModel.searchNotice.filter { item -> (item as NoticeItem.CommonNotice).campus == value || (item as NoticeItem.CommonNotice).campus == "공통" } else viewModel.searchNotice
+                    commonNoticeAdapter.submitList(data)
+                } else {
+                    commonNoticeAdapter.submitList(emptyList())
+                    viewModel.classificationNotice(noticeType, viewModel.currentPage.value!!, value)
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}

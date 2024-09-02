@@ -57,6 +57,7 @@ class CommonNoticeViewModel @Inject constructor(
 
     var totalPage = 0
     var currentNotice = listOf<NoticeItem>()
+    var searchNotice = listOf<NoticeItem>()
 
     private val _uiState = MutableLiveData<UiState<List<NoticeItem>>>(UiState.Loading)
     val uiState: LiveData<UiState<List<NoticeItem>>> get() = _uiState
