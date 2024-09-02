@@ -123,10 +123,6 @@ class CommonNoticeFragment(
             (requireActivity() as HomeActivity).binding.bottomNavigation.selectedItemId = R.id.navigation_home
         }
 
-        binding.ibProfile.setOnClickListener {
-            (requireActivity() as HomeActivity).binding.bottomNavigation.selectedItemId = R.id.navigation_my_page
-        }
-
         binding.btnBack.setOnClickListener {
             showNoticePage()
         }
