@@ -17,6 +17,7 @@ import com.neverland.thinkerbell.base.BaseFragment
 import com.neverland.thinkerbell.databinding.FragmentSearchResultBinding
 import com.neverland.thinkerbell.utils.UiState
 import com.neverland.thinkerbell.view.HomeActivity
+import com.neverland.thinkerbell.view.home.HomeFragment
 import com.neverland.thinkerbell.view.search.adapter.SearchResultVPAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.regex.Pattern
@@ -82,6 +83,10 @@ class SearchResultFragment(
     @SuppressLint("ClickableViewAccessibility")
     override fun initListener() {
         super.initListener()
+
+        binding.ivHomeLogo.setOnClickListener {
+            (requireActivity() as HomeActivity).replaceFragment(R.id.fl_home, HomeFragment(), false)
+        }
 
         binding.etSearch.setOnEditorActionListener { _, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH ||

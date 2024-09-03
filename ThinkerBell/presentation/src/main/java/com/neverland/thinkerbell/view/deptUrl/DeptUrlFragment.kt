@@ -13,6 +13,7 @@ import com.neverland.thinkerbell.databinding.FragmentDeptUrlBinding
 import com.neverland.thinkerbell.utils.UiState
 import com.neverland.thinkerbell.view.HomeActivity
 import com.neverland.thinkerbell.view.OnRvItemClickListener
+import com.neverland.thinkerbell.view.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -64,5 +65,12 @@ class DeptUrlFragment : BaseFragment<FragmentDeptUrlBinding>() {
             )
         )
         binding.rvDeptUrl.adapter = expandableAdapter
+    }
+
+    override fun initListener() {
+        super.initListener()
+        binding.ivHomeLogo.setOnClickListener {
+            (requireActivity() as HomeActivity).replaceFragment(R.id.fl_home, HomeFragment(), false)
+        }
     }
 }

@@ -4,9 +4,12 @@ import androidx.fragment.app.viewModels
 import com.google.android.material.tabs.TabLayoutMediator
 import com.neverland.domain.enums.NoticeType
 import com.neverland.domain.model.notice.NoticeItem
+import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.base.BaseFragment
 import com.neverland.thinkerbell.databinding.FragmentFavoriteBinding
 import com.neverland.thinkerbell.utils.UiState
+import com.neverland.thinkerbell.view.HomeActivity
+import com.neverland.thinkerbell.view.home.HomeFragment
 import com.neverland.thinkerbell.view.myPage.adapter.FavoriteVPAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -53,4 +56,10 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
         }.attach()
     }
 
+    override fun initListener() {
+        super.initListener()
+        binding.ivHomeLogo.setOnClickListener {
+            (requireActivity() as HomeActivity).binding.bottomNavigation.selectedItemId = R.id.navigation_home
+        }
+    }
 }
