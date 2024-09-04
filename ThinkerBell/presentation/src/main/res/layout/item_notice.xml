@@ -9,31 +9,14 @@
     android:background="@color/primary2"
     android:paddingVertical="12dp">
 
-    <ToggleButton
-        android:id="@+id/tb_favorites"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        android:background="@drawable/favorites_background"
-
-        android:text="@null"
-        android:textOn="@null"
-        android:textOff="@null"
-
-        android:layout_marginStart="20dp"/>
-
     <TextView
         android:id="@+id/tv_notice_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
-        app:layout_constraintTop_toTopOf="@id/tb_favorites"
-        app:layout_constraintBottom_toBottomOf="@id/tb_favorites"
-        app:layout_constraintStart_toEndOf="@id/tb_favorites"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tv_notice_date"
         android:layout_marginHorizontal="20dp"
 
@@ -46,14 +29,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        app:layout_constraintTop_toTopOf="@id/tb_favorites"
-        app:layout_constraintBottom_toBottomOf="@id/tb_favorites"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_notice_title"
+        app:layout_constraintBottom_toBottomOf="@id/tv_notice_title"
+        app:layout_constraintEnd_toStartOf="@id/tb_favorites"
         android:layout_marginEnd="20dp"
 
         tools:text="작성날짜"
         style="@style/Paragraph_Small"
         android:textColor="@color/content_secondary"/>
+
+    <ToggleButton
+        android:id="@+id/tb_favorites"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+
+        app:layout_constraintTop_toTopOf="@id/tv_notice_title"
+        app:layout_constraintBottom_toBottomOf="@id/tv_notice_title"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:background="@drawable/favorites_background"
+
+        android:text="@null"
+        android:textOn="@null"
+        android:textOff="@null"
+
+        android:layout_marginEnd="20dp" />
 
     <View
         android:id="@+id/divider"

@@ -13,6 +13,7 @@ import com.neverland.thinkerbell.databinding.FragmentMyPageBinding
 import com.neverland.thinkerbell.utils.UiState
 import com.neverland.thinkerbell.view.HomeActivity
 import com.neverland.thinkerbell.view.OnRvItemClickListener
+import com.neverland.thinkerbell.view.home.HomeFragment
 import com.neverland.thinkerbell.view.myPage.adapter.MyPageFavoriteNoticeAdapter
 import com.neverland.thinkerbell.view.myPage.adapter.MyPageKeywordAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -124,6 +125,9 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
 
     override fun initListener() {
         super.initListener()
+        binding.ivHomeLogo.setOnClickListener {
+            (requireActivity() as HomeActivity).binding.bottomNavigation.selectedItemId = R.id.navigation_home
+        }
         binding.ibPageRightFavorite.setOnClickListener {
             (requireActivity() as HomeActivity).replaceFragment(
                 R.id.fl_home,

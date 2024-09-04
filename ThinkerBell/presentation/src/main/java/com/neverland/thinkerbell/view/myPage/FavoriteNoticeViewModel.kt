@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.neverland.core.utils.LoggerUtil
 import com.neverland.domain.enums.NoticeType
 import com.neverland.domain.usecase.bookmark.DeleteBookmarkUseCase
 import com.neverland.domain.usecase.bookmark.PostBookmarkUseCase
@@ -15,46 +16,50 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FavoriteNoticeViewModel @Inject constructor(
-    private val postBookmarkNoticeUseCase: PostBookmarkUseCase,
-    private val deleteBookmarkNoticeUseCase: DeleteBookmarkUseCase
+    private val postBookmarkUseCase: PostBookmarkUseCase,
+    private val deleteBookmarkUseCase: DeleteBookmarkUseCase,
 ) : ViewModel() {
 
 
     private val _bookmarkState = MutableLiveData<UiState<Unit>>(UiState.Loading)
     val bookmarkState: LiveData<UiState<Unit>> get() = _bookmarkState
 
-    fun postBookmark(noticeId: Int, noticeType: NoticeType) {
-        _bookmarkState.value = UiState.Loading
+    private val _toastState = MutableLiveData<UiState<String>>(UiState.Loading)
+    val toastState: LiveData<UiState<String>> get() = _toastState
 
+    fun postBookmark(category: NoticeType, noticeId: Int){
         viewModelScope.launch {
-            postBookmarkNoticeUseCase.invoke(
-                noticeId = noticeId,
-                category = noticeType,
-                ssaId = application.getAndroidId()
+            postBookmarkUseCase.invoke(
+                ssaId = application.getAndroidId(),
+                category = category,
+                noticeId = noticeId
             )
+                .onFailure {
+                    LoggerUtil.e("[${category.koName}] 즐겨찾기 실패: ${it.message}")
+                    _toastState.value = UiState.Success("즐겨찾기 실패")
+                }
                 .onSuccess {
-                    _bookmarkState.value = UiState.Success(Unit)
+                    LoggerUtil.d("[${category.koName}] 즐겨찾기 성공")
+                    _toastState.value = UiState.Success("즐겨찾기 되었습니다.")
                 }
-                .onFailure { exception ->
-                    _bookmarkState.value = UiState.Error(exception)
-                }
+
         }
     }
 
-    fun deleteBookmark(noticeId: Int, noticeType: NoticeType) {
-        _bookmarkState.value = UiState.Loading
-
+    fun deleteBookmark(category: NoticeType, noticeId: Int){
         viewModelScope.launch {
-            deleteBookmarkNoticeUseCase.invoke(
-                noticeId = noticeId,
-                category = noticeType,
-                ssaId = application.getAndroidId()
+            deleteBookmarkUseCase.invoke(
+                ssaId = application.getAndroidId(),
+                category = category,
+                noticeId = noticeId
             )
-                .onSuccess {
-                    _bookmarkState.value = UiState.Success(Unit)
+                .onFailure {
+                    LoggerUtil.e("[${category.koName}] 즐겨찾기 삭제 실패: ${it.message}")
+                    _toastState.value = UiState.Success("즐겨찾기 삭제 실패")
                 }
-                .onFailure { exception ->
-                    _bookmarkState.value = UiState.Error(exception)
+                .onSuccess {
+                    LoggerUtil.d("[${category.koName}] 즐겨찾기 삭제 성공")
+                    _toastState.value = UiState.Success("삭제되었습니다.")
                 }
         }
     }
