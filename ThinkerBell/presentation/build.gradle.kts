@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -6,6 +8,8 @@ plugins {
     alias(libs.plugins.googleKsp)
     alias(libs.plugins.hilt)
 }
+
+val properties = gradleLocalProperties(rootDir, providers)
 
 android {
     namespace = "com.neverland.thinkerbell"
@@ -16,13 +20,37 @@ android {
         minSdk = 29
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        versionName = "0.0.1"
+        versionCode = if (project.hasProperty("versionCode")) {
+            project.property("versionCode").toString().toInt()
+        } else {
+            1
+        }
+    }
+
+    applicationVariants.all {
+        outputs.all {
+            val outputImpl = this as com.android.build.gradle.internal.api.ApkVariantOutputImpl
+            val newFileName = "thinkerbell-${name}.apk"
+            outputImpl.outputFileName = newFileName
+        }
+    }
+
+    signingConfigs {
+        create("release") {
+            keyAlias = properties["SIGNED_KEY_ALIAS"] as String?
+            keyPassword = properties["SIGNED_KEY_PASSWORD"] as String?
+            storeFile = properties["SIGNED_STORE_FILE"]?.let { file(it) }
+            storePassword = properties["SIGNED_STORE_PASSWORD"] as String?
+        }
     }
 
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
