@@ -50,4 +50,4 @@ jobs:
           appId: ${{ secrets.FIREBASE_APP_ID }}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           groups: Team-NeverLand
-          file: ./ThinkerBell/presentation/release/thinkerbell-release.apk
+          file: ./ThinkerBell/presentation/build/outputs/apk/release/thinkerbell-release.apk
