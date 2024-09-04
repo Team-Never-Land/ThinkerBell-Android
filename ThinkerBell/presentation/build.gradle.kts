@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -6,6 +8,8 @@ plugins {
     alias(libs.plugins.googleKsp)
     alias(libs.plugins.hilt)
 }
+
+val properties = gradleLocalProperties(rootDir, providers)
 
 android {
     namespace = "com.neverland.thinkerbell"
@@ -16,7 +20,6 @@ android {
         minSdk = 29
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
