@@ -54,12 +54,12 @@ class HomeCalendarViewModel @Inject constructor(
                 noticeId = noticeId
             )
                 .onFailure {
-                    LoggerUtil.e("[${category.koName}] 북마크 실패: ${it.message}")
-                    _toastState.value = UiState.Success("북마크 실패")
+                    LoggerUtil.e("[${category.koName}] 즐겨찾기 실패: ${it.message}")
+                    _toastState.value = UiState.Success("즐겨찾기 실패")
                 }
                 .onSuccess {
-                    LoggerUtil.d("[${category.koName}] 북마크 성공")
-                    _toastState.value = UiState.Success("북마크 성공")
+                    LoggerUtil.d("[${category.koName}] 즐겨찾기 성공")
+                    _toastState.value = UiState.Success("즐겨찾기 되었습니다.")
                 }
 
         }
@@ -75,12 +75,12 @@ class HomeCalendarViewModel @Inject constructor(
                 noticeId = noticeId
             )
                 .onFailure {
-                    LoggerUtil.e("[${category.koName}] 북마크 삭제 실패: ${it.message}")
-                    _toastState.value = UiState.Success("북마크 삭제 실패")
+                    LoggerUtil.e("[${category.koName}] 즐겨찾기 삭제 실패: ${it.message}")
+                    _toastState.value = UiState.Success("즐겨찾기 삭제 실패")
                 }
                 .onSuccess {
-                    LoggerUtil.d("[${category.koName}] 북마크 삭제 성공")
-                    _toastState.value = UiState.Success("북마크 삭제 성공")
+                    LoggerUtil.d("[${category.koName}] 즐겨찾기 삭제 성공")
+                    _toastState.value = UiState.Success("삭제되었습니다.")
                 }
         }
     }

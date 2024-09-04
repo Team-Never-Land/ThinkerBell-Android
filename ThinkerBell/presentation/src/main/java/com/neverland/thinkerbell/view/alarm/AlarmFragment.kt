@@ -11,6 +11,7 @@ import com.neverland.thinkerbell.databinding.FragmentAlarmBinding
 import com.neverland.thinkerbell.utils.UiState
 import com.neverland.thinkerbell.view.HomeActivity
 import com.neverland.thinkerbell.view.alarm.adapter.AlarmVPAdapter
+import com.neverland.thinkerbell.view.home.HomeFragment
 import com.neverland.thinkerbell.view.myPage.KeywordManageFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -98,6 +99,11 @@ class AlarmFragment : BaseFragment<FragmentAlarmBinding>() {
 
     override fun initListener() {
         super.initListener()
+
+        binding.ivHomeLogo.setOnClickListener {
+            (requireActivity() as HomeActivity).replaceFragment(R.id.fl_home, HomeFragment(), false)
+        }
+
         binding.btnEmpty.setOnClickListener {
             (requireActivity() as HomeActivity).replaceFragment(
                 R.id.fl_home,

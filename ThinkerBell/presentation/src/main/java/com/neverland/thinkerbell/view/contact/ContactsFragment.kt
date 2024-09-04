@@ -11,6 +11,7 @@ import com.neverland.thinkerbell.databinding.FragmentContactsBinding
 import com.neverland.thinkerbell.utils.UiState
 import com.neverland.thinkerbell.view.HomeActivity
 import com.neverland.thinkerbell.view.OnRvItemClickListener
+import com.neverland.thinkerbell.view.home.HomeFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -60,5 +61,12 @@ class ContactsFragment : BaseFragment<FragmentContactsBinding>() {
             )
         )
         binding.rvContacts.adapter = expandableAdapter
+    }
+
+    override fun initListener() {
+        super.initListener()
+        binding.ivHomeLogo.setOnClickListener {
+            (requireActivity() as HomeActivity).replaceFragment(R.id.fl_home, HomeFragment(), false)
+        }
     }
 }
