@@ -34,7 +34,7 @@ android {
     applicationVariants.all {
         outputs.all {
             val outputImpl = this as com.android.build.gradle.internal.api.ApkVariantOutputImpl
-            val newFileName = "3days-${name}.apk"
+            val newFileName = "thinkerbell-${name}.apk"
             outputImpl.outputFileName = newFileName
         }
     }
