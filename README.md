@@ -1,6 +1,6 @@
 # 3rd-MVP-Neverland-Android
 [DEPth-3rd-MVP] 🧚네버랜드🧚 팀의 안드로이드 레포지토리 입니다.
-<br>
+
 <br>
 
 ## 🖐️ 서비스 소개
@@ -19,7 +19,7 @@
 <br>
 
 ## ⚙️ Android App Architecture
-![Android App Architecture](https://github.com/user-attachments/assets/da7e13f9-77ab-40db-bb1b-bbbb3af58145)
+![Android App Architecture](https://github.com/user-attachments/assets/ce022769-9a30-4ddb-b5ea-9401f01f6e9c)
 <br>
 
 ## 🗂️ Package Structure
@@ -28,9 +28,9 @@
 ├── 📁 core
 │   └── 📁 utils
 ├── 📁 data
-│   ├── 📁 local
-│   │   └── 📁 model
-│   ├── 📁 mapper
+│   ├── 📁 datasource
+│   ├── 📁 datasourceImpl
+│   ├── 📁 di
 │   ├── 📁 remote
 │   │   ├── 📁 model
 │   │   └── 📁 service
@@ -72,3 +72,4 @@
 | **이미지 캐싱 및 로드** | Glide |
 | **뷰 관련** | nex3z:flow-layout |
 | **상태 관리** | LiveData |
+| **DI** | Hilt |
