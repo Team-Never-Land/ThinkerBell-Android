@@ -13,7 +13,6 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.neverland.core.utils.LoggerUtil
@@ -61,7 +60,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     private fun sendRegistrationToServer(token: String?) {
-        LoggerUtil.d("sendRegistrationTokenToServer($token)")
+        LoggerUtil.d("Send Registration New Token To Server:\n$token")
     }
 
     private fun sendNotification(title: String, body: String, url: String?) {
@@ -80,7 +79,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val channelId = "fcm_default_channel"
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setSmallIcon(R.drawable.ic_thinkerbell)
             .setContentTitle(title)
             .setContentText(body)
             .setAutoCancel(true)
@@ -107,18 +106,5 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         override fun doWork(): Result {
             return Result.success()
         }
-    }
-
-    fun getRegistrationToken(callback: (String?) -> Unit) {
-        FirebaseMessaging.getInstance().token
-            .addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val token = task.result
-                    callback(token)
-                } else {
-                    LoggerUtil.w("Fetching FCM Registration Token failed\n${task.exception}")
-                    callback(null)
-                }
-            }
     }
 }
