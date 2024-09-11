@@ -1,60 +1,41 @@
 package com.neverland.data.repository
 
 import com.neverland.data.datasource.KeywordDataSource
+import com.neverland.data.utils.handleResponse
 import com.neverland.domain.model.keyword.Keyword
 import com.neverland.domain.repository.KeywordRepository
 import javax.inject.Inject
 
 class KeywordRepositoryImpl @Inject constructor(
     private val datasource: KeywordDataSource
-): KeywordRepository {
+) : KeywordRepository {
 
     override suspend fun getKeyword(ssaId: String): Result<List<Keyword>> {
-        return try {
-            val res = datasource.getKeyword(ssaId).body()
-
-            if(res!!.code == 200){
-                if(res.data != null) {
-                    if(res.data.isNotEmpty()) {
-                        Result.success(res.data.map { Keyword(keyword = it.keyword) })
-                    } else {
-                        Result.success(emptyList())
-                    }
+        return handleResponse(
+            call = { datasource.getKeyword(ssaId) },
+            onSuccess = { data ->
+                if (data!!.isNotEmpty()) {
+                    data.map { Keyword(keyword = it.keyword) }
                 } else {
-                    Result.failure(Exception("Get Keyword failed: response is null data"))
+                    emptyList()
                 }
-            } else {
-                Result.failure(Exception("Get Keyword failed: ${res.data}"))
             }
-        } catch (e : Exception) {
-            Result.failure(e)
-        }
+        )
     }
 
     override suspend fun postKeyword(keyword: String, ssaId: String): Result<Boolean> {
-        return try {
-            val res = datasource.postKeyword(keyword, ssaId).body()
-            if(res!!.code == 200){
-                Result.success(true)
-            } else {
-                Result.failure(Exception("Post Keyword failed: ${res.data}"))
-            }
-        } catch (e : Exception){
-            Result.failure(e)
-        }
+        return handleResponse(
+            dataNullSafe = true,
+            call = { datasource.postKeyword(keyword, ssaId) },
+            onSuccess = { true }
+        )
     }
 
     override suspend fun deleteKeyword(keyword: String, ssaId: String): Result<Boolean> {
-        return try {
-            val res = datasource.deleteKeyword(keyword, ssaId).body()
-
-            if(res!!.code == 200){
-                Result.success(true)
-            } else {
-                Result.failure(Exception("Delete Keyword failed: ${res.data}"))
-            }
-        } catch (e : Exception){
-            Result.failure(e)
-        }
+        return handleResponse(
+            dataNullSafe = true,
+            call = { datasource.deleteKeyword(keyword, ssaId) },
+            onSuccess = { true }
+        )
     }
 }

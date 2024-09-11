@@ -41,10 +41,6 @@ class SearchAllNoticesByCategoryUseCase @Inject constructor(
             nonEmptyListsWithItems[NoticeType.TEACHING_NOTICE] = allNotices.teachingNotice
         }
 
-        if (!allNotices.jobTrainingNotice.isNullOrEmpty()) {
-            nonEmptyListsWithItems[NoticeType.JOB_TRAINING_NOTICE] = allNotices.jobTrainingNotice
-        }
-
         if (!allNotices.eventNotice.isNullOrEmpty()) {
             nonEmptyListsWithItems[NoticeType.EVENT_NOTICE] = allNotices.eventNotice
         }

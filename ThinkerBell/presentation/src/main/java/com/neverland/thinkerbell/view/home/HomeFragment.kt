@@ -97,11 +97,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 is UiState.Success -> {
                     binding.ivHomeNotificationIcon.setImageResource(if (it.data) R.drawable.ic_topbar_bell_badge else R.drawable.ic_topbar_bell)
                 }
-
-                is UiState.Error -> {
-
-                }
-
+                is UiState.Error -> {}
                 is UiState.Empty -> {}
             }
         }
@@ -176,16 +172,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         val job = CoroutineScope(Dispatchers.Main).launch {
             while (isActive) {
                 val currentItem = binding.vpHomeBanner.currentItem
-                val nextItem = if (currentItem == bannerAdapter.itemCount - 1) 0 else currentItem + 1
+                val nextItem =
+                    if (currentItem == bannerAdapter.itemCount - 1) 0 else currentItem + 1
                 binding.vpHomeBanner.setCurrentItem(nextItem, true)
                 delay(4000)
             }
         }
 
-        binding.vpHomeBanner.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
+        binding.vpHomeBanner.addOnAttachStateChangeListener(object :
+            View.OnAttachStateChangeListener {
             override fun onViewAttachedToWindow(v: View) {}
             override fun onViewDetachedFromWindow(v: View) {
-                LoggerUtil.i("cancel")
                 job.cancel()
             }
         })

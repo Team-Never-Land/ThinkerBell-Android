@@ -142,16 +142,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_setting" />
 
-    <ToggleButton
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/tb_alarm"
         android:layout_width="56dp"
         android:layout_height="32dp"
         android:layout_marginTop="27dp"
         android:layout_marginEnd="25dp"
-        android:background="@drawable/toggle_selector"
-        android:checked="true"
-        android:textOff=""
-        android:textOn=""
+        android:background="@null"
+        style="@style/alarm_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_setting" />
 

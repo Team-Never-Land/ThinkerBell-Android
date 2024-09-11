@@ -1,11 +1,22 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText">
+
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_underbar_home" />
+        android:icon="@drawable/ic_underbar_home"
+        android:title="홈" />
     <item
         android:id="@+id/navigation_category"
-        android:icon="@drawable/ic_underbar_menu" />
+        android:icon="@drawable/ic_underbar_menu"
+        android:title="공지" />
     <item
         android:id="@+id/navigation_my_page"
-        android:icon="@drawable/ic_underbar_profile_2" />
+        android:icon="@drawable/ic_underbar_profile_2"
+        android:title="즐겨찾기" />
+    <item
+        android:id="@+id/navigation_setting"
+        android:icon="@drawable/ic_setting"
+        android:title="설정"/>
 </menu>

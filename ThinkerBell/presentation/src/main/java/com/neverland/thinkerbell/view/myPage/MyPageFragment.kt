@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.neverland.core.utils.LoggerUtil
 import com.neverland.domain.model.keyword.Keyword
 import com.neverland.domain.model.notice.RecentBookmarkNotice
 import com.neverland.thinkerbell.R

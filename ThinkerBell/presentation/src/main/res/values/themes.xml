@@ -32,4 +32,11 @@
     <style name="SpinnerTheme">
         <item name="android:dropDownListViewStyle">@style/SpinnerDivideStyle</item>
     </style>
+
+    <style name="alarm_toggle">
+        <item name="thumbTint">@color/primary2</item>
+        <item name="track">@drawable/toggle_track</item>
+        <item name="android:thumb">@drawable/toggle_thumb</item>
+        <item name="android:enabled">true</item>
+    </style>
 </resources>

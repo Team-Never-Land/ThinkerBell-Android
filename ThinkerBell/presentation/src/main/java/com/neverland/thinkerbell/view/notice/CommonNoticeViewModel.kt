@@ -84,7 +84,7 @@ class CommonNoticeViewModel @Inject constructor(
             NoticeType.DORMITORY_ENTRY_NOTICE -> dormitoryEntryNotice(page, campus)
             NoticeType.LIBRARY_NOTICE -> libraryNotice(page, campus)
             NoticeType.TEACHING_NOTICE -> teachingNotice(page)
-            NoticeType.JOB_TRAINING_NOTICE -> jobTrainingNotice(page)
+//            NoticeType.JOB_TRAINING_NOTICE -> jobTrainingNotice(page)
             else -> dummyFunc()
         }
     }
@@ -401,23 +401,23 @@ class CommonNoticeViewModel @Inject constructor(
         }
     }
 
-    private fun jobTrainingNotice(page: Int){
-        _uiState.value = UiState.Loading
-
-        viewModelScope.launch {
-            getJobTrainingNoticesUseCase.invoke(
-                page = page,
-                ssaId = application.getAndroidId()
-            )
-                .onFailure {
-                    _uiState.value = UiState.Error(it)
-                }
-                .onSuccess {
-                    if(page == 0) totalPage = calculateTotalPages(totalItems = it.totalItems, firstPageItems = it.items.size)
-                    _uiState.value = UiState.Success(it.items.ifEmpty { emptyList() })
-                }
-        }
-    }
+//    private fun jobTrainingNotice(page: Int){
+//        _uiState.value = UiState.Loading
+//
+//        viewModelScope.launch {
+//            getJobTrainingNoticesUseCase.invoke(
+//                page = page,
+//                ssaId = application.getAndroidId()
+//            )
+//                .onFailure {
+//                    _uiState.value = UiState.Error(it)
+//                }
+//                .onSuccess {
+//                    if(page == 0) totalPage = calculateTotalPages(totalItems = it.totalItems, firstPageItems = it.items.size)
+//                    _uiState.value = UiState.Success(it.items.ifEmpty { emptyList() })
+//                }
+//        }
+//    }
 
     private fun calculateTotalPages(totalItems: Int, firstPageItems: Int): Int {
         if (totalItems <= firstPageItems) {

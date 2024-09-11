@@ -43,10 +43,6 @@ class GetBookmarkNoticeUseCase @Inject constructor(
             nonEmptyListsWithItems[NoticeType.TEACHING_NOTICE] = bookmarkNotice.teachingNotice
         }
 
-        if (!bookmarkNotice.jobTrainingNotice.isNullOrEmpty()) {
-            nonEmptyListsWithItems[NoticeType.JOB_TRAINING_NOTICE] = bookmarkNotice.jobTrainingNotice
-        }
-
         if (!bookmarkNotice.eventNotice.isNullOrEmpty()) {
             nonEmptyListsWithItems[NoticeType.EVENT_NOTICE] = bookmarkNotice.eventNotice
         }
