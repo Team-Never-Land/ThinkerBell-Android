@@ -76,6 +76,7 @@ class CommonNoticeFragment(
 
         binding.tvNoticeTitle.text = noticeType.koName
         binding.groupNoticeSearchView.visibility = View.GONE
+        binding.btnBack.visibility = View.GONE
         setupRecyclerView()
 
         if(spinnerRequiredNotices.contains(noticeType)) setCampusSpinner() else binding.spinnerCampus.visibility = View.GONE
@@ -177,6 +178,7 @@ class CommonNoticeFragment(
     private fun showNoticePage() {
         viewModel.searchNotice = emptyList()
         binding.groupNoticeSearchView.visibility = View.GONE
+        binding.btnBack.visibility = View.GONE
         binding.llNoticePage.visibility = View.VISIBLE
         if(spinnerRequiredNotices.contains(noticeType)) setCampusSpinner() else binding.spinnerCampus.visibility = View.GONE
         binding.tvEmptyView.visibility = View.GONE
@@ -234,11 +236,13 @@ class CommonNoticeFragment(
                 binding.llNoticePage.visibility = View.GONE
                 binding.spinnerCampus.visibility = View.GONE
                 binding.groupNoticeSearchView.visibility = View.GONE
+                binding.btnBack.visibility = View.GONE
                 binding.etSearch.text.clear()
             }
             is UiState.Success -> {
                 commonNoticeAdapter.submitList(state.data)
                 binding.groupNoticeSearchView.visibility = View.VISIBLE
+                binding.btnBack.visibility = View.VISIBLE
                 binding.llNoticePage.visibility = View.GONE
                 binding.tvSearchNoticeResult.text = "'${binding.etSearch.text}'이(가) 포함된 공지사항 (${state.data.size}개)"
                 binding.etSearch.text.clear()
