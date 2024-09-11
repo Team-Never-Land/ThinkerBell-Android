@@ -10,7 +10,6 @@ import com.neverland.thinkerbell.base.BaseFragment
 import com.neverland.thinkerbell.databinding.FragmentSettingBinding
 import com.neverland.thinkerbell.utils.UiState
 import com.neverland.thinkerbell.view.HomeActivity
-import com.neverland.thinkerbell.view.myPage.KeywordManageFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
