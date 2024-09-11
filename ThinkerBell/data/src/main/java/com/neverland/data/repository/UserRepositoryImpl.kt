@@ -16,7 +16,7 @@ class UserRepositoryImpl @Inject constructor(
             if(res!!.code == 200){
                 Result.success(true)
             } else {
-                Result.failure(Exception("Post User Info failed: ${res.message}"))
+                Result.failure(Exception("Post User Info failed: ${res.data}"))
             }
         } catch (e : Exception){
             Result.failure(e)

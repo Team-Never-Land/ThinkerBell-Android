@@ -23,7 +23,7 @@ class UnivRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get department url failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get department url failed: ${res.message}"))
+                Result.failure(Exception("Get department url failed: ${res.data}"))
             }
         } catch (e : Exception){
             Result.failure(e)
@@ -40,7 +40,7 @@ class UnivRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get department contact failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get department contact failed: ${res.message}"))
+                Result.failure(Exception("Get department contact failed: ${res.data}"))
             }
         } catch (e : Exception){
             Result.failure(e)
@@ -57,7 +57,7 @@ class UnivRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get monthly academic schedule failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get monthly academic schedule failed: ${res.message}"))
+                Result.failure(Exception("Get monthly academic schedule failed: ${res.data}"))
             }
         } catch (e : Exception){
             Result.failure(e)
@@ -74,7 +74,7 @@ class UnivRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get banner failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get banner failed: ${res.message}"))
+                Result.failure(Exception("Get banner failed: ${res.data}"))
             }
         } catch (e : Exception){
             Result.failure(e)

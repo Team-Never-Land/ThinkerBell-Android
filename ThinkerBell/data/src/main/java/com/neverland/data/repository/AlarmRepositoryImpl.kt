@@ -16,7 +16,7 @@ class AlarmRepositoryImpl @Inject constructor(
             if(res!!.code == 200){
                 Result.success(res.data ?: "")
             } else {
-                Result.failure(Exception("Read Alarm failed: ${res.message}"))
+                Result.failure(Exception("Read Alarm failed: ${res.data}"))
             }
         } catch (e : Exception) {
             Result.failure(e)
@@ -38,7 +38,7 @@ class AlarmRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get Alarm failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get Alarm failed: ${res.message}"))
+                Result.failure(Exception("Get Alarm failed: ${res.data}"))
             }
         } catch (e : Exception) {
             Result.failure(e)
@@ -56,7 +56,7 @@ class AlarmRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Check Alarm failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Check Alarm failed: ${res.message}"))
+                Result.failure(Exception("Check Alarm failed: ${res.data}"))
             }
         } catch (e : Exception) {
             Result.failure(e)
@@ -74,7 +74,7 @@ class AlarmRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Check Alarm failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Check Alarm failed: ${res.message}"))
+                Result.failure(Exception("Check Alarm failed: ${res.data}"))
             }
         } catch (e : Exception) {
             Result.failure(e)

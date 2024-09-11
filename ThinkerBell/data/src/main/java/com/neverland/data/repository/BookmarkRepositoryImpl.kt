@@ -39,7 +39,7 @@ class BookmarkRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get BookmarkNotices failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get BookmarkNotices failed: ${res.message}"))
+                Result.failure(Exception("Get BookmarkNotices failed: ${res.data}"))
             }
         } catch (e : Exception){
             Result.failure(e)
@@ -61,7 +61,7 @@ class BookmarkRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get Recent Bookmark failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get Recent Bookmark failed: ${res.message}"))
+                Result.failure(Exception("Get Recent Bookmark failed: ${res.data}"))
             }
         } catch (e : Exception) {
             Result.failure(e)
@@ -79,7 +79,7 @@ class BookmarkRepositoryImpl @Inject constructor(
             if(res!!.code == 200){
                 Result.success(true)
             } else {
-                Result.failure(Exception("Post Bookmark failed: ${res.message}"))
+                Result.failure(Exception("Post Bookmark failed: ${res.data}"))
             }
         } catch (e : Exception){
             Result.failure(e)
@@ -97,7 +97,7 @@ class BookmarkRepositoryImpl @Inject constructor(
             if(res!!.code == 200){
                 Result.success(true)
             } else {
-                Result.failure(Exception("Delete Bookmark failed: ${res.message}"))
+                Result.failure(Exception("Delete Bookmark failed: ${res.data}"))
             }
         } catch (e : Exception){
             Result.failure(e)

@@ -43,7 +43,7 @@ class NoticeRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get DormitoryNotices failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get DormitoryNotices failed: ${res.message}"))
+                Result.failure(Exception("Get DormitoryNotices failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -80,7 +80,7 @@ class NoticeRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get DormitoryNotices failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get DormitoryNotices failed: ${res.message}"))
+                Result.failure(Exception("Get DormitoryNotices failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -118,7 +118,7 @@ class NoticeRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get JobTrainingNotices failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get JobTrainingNotices failed: ${res.message}"))
+                Result.failure(Exception("Get JobTrainingNotices failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -154,7 +154,7 @@ class NoticeRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get LibraryNotices failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get LibraryNotices failed: ${res.message}"))
+                Result.failure(Exception("Get LibraryNotices failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -190,7 +190,7 @@ class NoticeRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get TeachingNotices failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get TeachingNotices failed: ${res.message}"))
+                Result.failure(Exception("Get TeachingNotices failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -227,7 +227,7 @@ class NoticeRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get AcademicNotices failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get AcademicNotices failed: ${res.message}"))
+                Result.failure(Exception("Get AcademicNotices failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -265,7 +265,7 @@ class NoticeRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get EventNotices failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get EventNotices failed: ${res.message}"))
+                Result.failure(Exception("Get EventNotices failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -303,7 +303,7 @@ class NoticeRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get NormalNotices failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get NormalNotices failed: ${res.message}"))
+                Result.failure(Exception("Get NormalNotices failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -341,7 +341,7 @@ class NoticeRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get RevisionNotices failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get RevisionNotices failed: ${res.message}"))
+                Result.failure(Exception("Get RevisionNotices failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -379,7 +379,7 @@ class NoticeRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get SafetyNotices failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get SafetyNotices failed: ${res.message}"))
+                Result.failure(Exception("Get SafetyNotices failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -419,7 +419,7 @@ class NoticeRepositoryImpl @Inject constructor(
                 }
             } else {
 
-                Result.failure(Exception("Get ScholarshipNotices failed: ${res.message}"))
+                Result.failure(Exception("Get ScholarshipNotices failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -457,7 +457,7 @@ class NoticeRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get StudentActsNotices failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get ScholarshipNotices failed: ${res.message}"))
+                Result.failure(Exception("Get ScholarshipNotices failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -496,7 +496,7 @@ class NoticeRepositoryImpl @Inject constructor(
                 }
             } else {
 
-                Result.failure(Exception("Get CareerNotices failed: ${res.message}"))
+                Result.failure(Exception("Get CareerNotices failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -535,7 +535,7 @@ class NoticeRepositoryImpl @Inject constructor(
                 }
             } else {
 
-                Result.failure(Exception("Get BiddingNotices failed: ${res.message}"))
+                Result.failure(Exception("Get BiddingNotices failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -604,7 +604,7 @@ class NoticeRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Failed to Search notices: response data is null"))
                 }
             } else {
-                Result.failure(Exception("Failed to Search notices: ${res.message}"))
+                Result.failure(Exception("Failed to Search notices: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -672,7 +672,7 @@ class NoticeRepositoryImpl @Inject constructor(
                 }
             } else {
 
-                Result.failure(Exception("Get Recent failed: ${res.message}"))
+                Result.failure(Exception("Get Recent failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -834,7 +834,7 @@ class NoticeRepositoryImpl @Inject constructor(
                 }
             } else {
 
-                Result.failure(Exception("Get BookmarkNotices failed: ${res.message}"))
+                Result.failure(Exception("Get BookmarkNotices failed: ${res.data}"))
             }
         } catch (e: Exception) {
             Result.failure(e)

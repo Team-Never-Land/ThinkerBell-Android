@@ -24,7 +24,7 @@ class KeywordRepositoryImpl @Inject constructor(
                     Result.failure(Exception("Get Keyword failed: response is null data"))
                 }
             } else {
-                Result.failure(Exception("Get Keyword failed: ${res.message}"))
+                Result.failure(Exception("Get Keyword failed: ${res.data}"))
             }
         } catch (e : Exception) {
             Result.failure(e)
@@ -37,7 +37,7 @@ class KeywordRepositoryImpl @Inject constructor(
             if(res!!.code == 200){
                 Result.success(true)
             } else {
-                Result.failure(Exception("Post Keyword failed: ${res.message}"))
+                Result.failure(Exception("Post Keyword failed: ${res.data}"))
             }
         } catch (e : Exception){
             Result.failure(e)
@@ -51,7 +51,7 @@ class KeywordRepositoryImpl @Inject constructor(
             if(res!!.code == 200){
                 Result.success(true)
             } else {
-                Result.failure(Exception("Delete Keyword failed: ${res.message}"))
+                Result.failure(Exception("Delete Keyword failed: ${res.data}"))
             }
         } catch (e : Exception){
             Result.failure(e)
