@@ -4,6 +4,7 @@ import com.neverland.data.remote.service.AlarmService
 import com.neverland.data.remote.service.BookmarkService
 import com.neverland.data.remote.service.KeywordService
 import com.neverland.data.remote.service.NoticeService
+import com.neverland.data.remote.service.ReportService
 import com.neverland.data.remote.service.UnivService
 import com.neverland.data.remote.service.UserService
 import dagger.Module
@@ -39,4 +40,8 @@ internal class ServiceModule {
     @Provides
     fun providesUserService(client: Retrofit): UserService =
         client.create(UserService::class.java)
+
+    @Provides
+    fun providesReportService(client: Retrofit): ReportService =
+        client.create(ReportService::class.java)
 }

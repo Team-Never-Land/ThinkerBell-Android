@@ -57,7 +57,7 @@ class SettingFragment: BaseFragment<FragmentSettingBinding>() {
             ibTos.setOnClickListener { openExternalBrowser("https://petite-pest-f69.notion.site/56313d788d914d6e8e996e099694272e") }
             ibPrivacyPolicy.setOnClickListener { openExternalBrowser("https://petite-pest-f69.notion.site/022b7a19351a418da5cf22304c7c3137") }
             ibKeyword.setOnClickListener { (requireActivity() as HomeActivity).replaceFragment(R.id.fl_home, KeywordManageFragment(), true) }
-            ibError.setOnClickListener {  }
+            ibError.setOnClickListener { (requireActivity() as HomeActivity).replaceFragment(R.id.fl_home, ErrorReportFragment(), true) }
         }
     }
 
