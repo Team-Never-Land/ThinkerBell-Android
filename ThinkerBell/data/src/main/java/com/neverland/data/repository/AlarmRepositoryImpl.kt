@@ -50,4 +50,18 @@ class AlarmRepositoryImpl @Inject constructor(
             onSuccess = { it!! }
         )
     }
+
+    override suspend fun getAlarmStatus(ssaId: String): Result<Boolean> {
+        return handleResponse(
+            call = { datasource.getAlarmStatus(ssaId) },
+            onSuccess = { it!! }
+        )
+    }
+
+    override suspend fun patchAlarmStatus(ssaId: String): Result<Boolean> {
+        return handleResponse(
+            call = { datasource.patchAlarmStatus(ssaId) },
+            onSuccess = { true }
+        )
+    }
 }

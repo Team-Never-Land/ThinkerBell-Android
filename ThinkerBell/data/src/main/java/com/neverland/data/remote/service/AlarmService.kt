@@ -4,6 +4,7 @@ import com.neverland.data.remote.model.BaseResponse
 import com.neverland.data.remote.model.alarm.AlarmDTO
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.PATCH
 import retrofit2.http.Query
 
 interface AlarmService {
@@ -26,6 +27,16 @@ interface AlarmService {
 
     @GET("/api/alarm/check-all")
     suspend fun checkAllAlarm(
+        @Query("SSAID") ssaId: String
+    ): Response<BaseResponse<Boolean>>
+
+    @GET("/api/alarm/alarm-status")
+    suspend fun getAlarmStatus(
+        @Query("SSAID") ssaId: String
+    ): Response<BaseResponse<Boolean>>
+
+    @PATCH("/api/alarm/alarm-toggle")
+    suspend fun patchAlarmStatus(
         @Query("SSAID") ssaId: String
     ): Response<BaseResponse<Boolean>>
 }

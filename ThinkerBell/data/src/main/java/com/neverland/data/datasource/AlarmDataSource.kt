@@ -3,6 +3,8 @@ package com.neverland.data.datasource
 import com.neverland.data.remote.model.BaseResponse
 import com.neverland.data.remote.model.alarm.AlarmDTO
 import retrofit2.Response
+import retrofit2.http.PATCH
+import retrofit2.http.Query
 
 interface AlarmDataSource {
     suspend fun readAlarm(
@@ -20,6 +22,15 @@ interface AlarmDataSource {
     ): Response<BaseResponse<Boolean>>
 
     suspend fun checkAllAlarm(
+        ssaId: String
+    ): Response<BaseResponse<Boolean>>
+
+    suspend fun getAlarmStatus(
+        ssaId: String
+    ): Response<BaseResponse<Boolean>>
+
+    @PATCH("/api/alarm/alarm-toggle")
+    suspend fun patchAlarmStatus(
         ssaId: String
     ): Response<BaseResponse<Boolean>>
 }
