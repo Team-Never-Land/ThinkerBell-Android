@@ -26,6 +26,7 @@ class SettingFragment: BaseFragment<FragmentSettingBinding>() {
         }
 
         setVersionName()
+        viewModel.fetchAlarmStatus()
         viewModel.fetchKeyword()
     }
 
@@ -43,6 +44,30 @@ class SettingFragment: BaseFragment<FragmentSettingBinding>() {
                 is UiState.Error -> {}
                 is UiState.Success -> {
                     setupKeywordRecyclerView(it.data)
+                }
+            }
+        }
+
+        viewModel.uiState.observe(viewLifecycleOwner){
+            when(it){
+                is UiState.Loading -> {}
+                is UiState.Empty -> {}
+                is UiState.Error -> {}
+                is UiState.Success -> {
+                    binding.switchAlarm.isChecked = it.data
+
+                    binding.switchAlarm.setOnCheckedChangeListener { _, _ -> viewModel.patchAlarmStatus() }
+                }
+            }
+        }
+
+        viewModel.alarmStatus.observe(viewLifecycleOwner){
+            when(it){
+                is UiState.Loading -> {}
+                is UiState.Empty -> {}
+                is UiState.Error -> {}
+                is UiState.Success -> {
+                    binding.switchAlarm.isChecked = !binding.switchAlarm.isChecked
                 }
             }
         }
