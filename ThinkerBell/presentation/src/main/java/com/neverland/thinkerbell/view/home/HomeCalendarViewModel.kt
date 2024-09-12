@@ -59,7 +59,7 @@ class HomeCalendarViewModel @Inject constructor(
                 }
                 .onSuccess {
                     LoggerUtil.d("[${category.koName}] 즐겨찾기 성공")
-                    _toastState.value = UiState.Success("즐겨찾기 되었습니다.")
+                    _toastState.value = UiState.Success("즐겨찾기 되었습니다")
                 }
 
         }
@@ -80,7 +80,7 @@ class HomeCalendarViewModel @Inject constructor(
                 }
                 .onSuccess {
                     LoggerUtil.d("[${category.koName}] 즐겨찾기 삭제 성공")
-                    _toastState.value = UiState.Success("삭제되었습니다.")
+                    _toastState.value = UiState.Success("삭제 되었습니다")
                 }
         }
     }

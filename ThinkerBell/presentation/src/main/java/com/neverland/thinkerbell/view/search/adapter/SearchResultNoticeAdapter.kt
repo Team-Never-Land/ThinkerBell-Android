@@ -66,11 +66,12 @@ class SearchResultNoticeAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (noticeType == NoticeType.JOB_TRAINING_NOTICE) {
-            VIEW_TYPE_JOB
-        } else {
-            VIEW_TYPE_COMMON
-        }
+        return VIEW_TYPE_COMMON
+//        return if (noticeType == NoticeType.JOB_TRAINING_NOTICE) {
+//            VIEW_TYPE_JOB
+//        } else {
+//            VIEW_TYPE_COMMON
+//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

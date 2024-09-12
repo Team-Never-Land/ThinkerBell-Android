@@ -6,7 +6,6 @@ data class BookmarkNotice(
     val libraryNotice: List<NoticeItem>?,
     val dormitoryNotice: List<NoticeItem>?,
     val teachingNotice: List<NoticeItem>?,
-    val jobTrainingNotice: List<NoticeItem>?,
     val eventNotice: List<NoticeItem>?,
     val studentActsNotice: List<NoticeItem>?,
     val academicNotice: List<NoticeItem>?,

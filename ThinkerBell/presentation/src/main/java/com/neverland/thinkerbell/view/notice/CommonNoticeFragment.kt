@@ -317,7 +317,7 @@ class CommonNoticeFragment(
                 val value = binding.spinnerCampus.getItemAtPosition(position).toString()
                 if(binding.groupNoticeSearchView.isVisible){
                     if(viewModel.searchNotice.isEmpty()) viewModel.searchNotice = commonNoticeAdapter.currentList.toList()
-                    val data = if(value != "전체") viewModel.searchNotice.filter { item -> (item as NoticeItem.CommonNotice).campus == value || (item as NoticeItem.CommonNotice).campus == "공통" } else viewModel.searchNotice
+                    val data = if(value != "전체") viewModel.searchNotice.filter { item -> (item as NoticeItem.CommonNotice).campus == value || item.campus == "공통" } else viewModel.searchNotice
                     commonNoticeAdapter.submitList(data)
                 } else {
                     commonNoticeAdapter.submitList(emptyList())

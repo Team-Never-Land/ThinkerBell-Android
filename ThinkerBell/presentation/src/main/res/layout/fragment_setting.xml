@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/primary2">
+
+    <Toolbar
+        android:id="@+id/tb_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary1"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <ImageView
+            android:id="@+id/iv_home_logo"
+            android:layout_width="22dp"
+            android:layout_height="17dp"
+            android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="26dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_thinkerbell_logo" />
+    </Toolbar>
+
+    <TextView
+        android:id="@+id/tv_setting_title"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:background="@color/primary1"
+
+        app:layout_constraintTop_toBottomOf="@id/tb_setting"
+
+        android:gravity="center|top"
+        android:text="설정"
+        style="@style/Label_XL"
+        android:textColor="@color/primary2"
+        android:paddingTop="8dp"/>
+
+    <TextView
+        android:id="@+id/tv_setting_subtitle_keyword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/tv_setting_title"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        
+        android:text="키워드 관리"
+        style="@style/Label_Medium"
+        android:textColor="@color/primary3"/>
+    
+    <ImageButton
+        android:id="@+id/ib_keyword"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintTop_toTopOf="@id/tv_setting_subtitle_keyword"
+        app:layout_constraintBottom_toBottomOf="@id/tv_setting_subtitle_keyword"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="12dp"
+
+        android:contentDescription="@null"
+        android:src="@drawable/ic_direaction_right_1"
+        app:tint="@color/red_gray_700"
+        android:background="@color/transparent"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_setting_keyword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:scrollbars="horizontal"
+        app:layout_constraintStart_toStartOf="@id/tv_setting_subtitle_keyword"
+        app:layout_constraintTop_toBottomOf="@id/tv_setting_subtitle_keyword"
+        tools:itemCount="1"
+        tools:listitem="@layout/item_my_page_keyword" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/red_gray_100"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintTop_toBottomOf="@id/rv_setting_keyword"
+        app:layout_constraintBottom_toTopOf="@id/tv_setting_subtitle_alarm"/>
+
+    <TextView
+        android:id="@+id/tv_setting_subtitle_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/rv_setting_keyword"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="52dp"
+
+        android:text="알림"
+        style="@style/Label_Medium"
+        android:textColor="@color/primary3"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch_alarm"
+        android:layout_width="56dp"
+        android:layout_height="32dp"
+
+        app:layout_constraintTop_toTopOf="@id/tv_setting_subtitle_alarm"
+        app:layout_constraintBottom_toBottomOf="@id/tv_setting_subtitle_alarm"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="24dp"
+
+        android:background="@null"
+        style="@style/alarm_toggle"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/red_gray_100"
+        android:layout_marginHorizontal="24dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_setting_subtitle_alarm"
+        app:layout_constraintBottom_toTopOf="@id/tv_version_name"/>
+
+    <TextView
+        android:id="@+id/tv_setting_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/tv_setting_subtitle_alarm"
+        app:layout_constraintStart_toStartOf="@id/tv_setting_subtitle_alarm"
+        android:layout_marginTop="52dp"
+
+        android:text="버전"
+        style="@style/Label_Medium"
+        android:textColor="@color/primary3"/>
+
+    <TextView
+        android:id="@+id/tv_version_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/tv_setting_version"
+        app:layout_constraintBottom_toBottomOf="@id/tv_setting_version"
+        app:layout_constraintEnd_toEndOf="@id/switch_alarm"
+
+        tools:text="1.0.0"
+        style="@style/Paragraph_Medium"
+        android:textColor="@color/content_secondary"/>
+
+    <TextView
+        android:id="@+id/tv_setting_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/tv_setting_version"
+        app:layout_constraintStart_toStartOf="@id/tv_setting_subtitle_alarm"
+        android:layout_marginTop="24dp"
+
+        android:text="오류신고"
+        style="@style/Label_Medium"
+        android:textColor="@color/primary3"/>
+
+    <ImageButton
+        android:id="@+id/ib_error"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintTop_toTopOf="@id/tv_setting_error"
+        app:layout_constraintBottom_toBottomOf="@id/tv_setting_error"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="12dp"
+
+        android:contentDescription="@null"
+        android:src="@drawable/ic_direaction_right_1"
+        app:tint="@color/red_gray_700"
+        android:background="@color/transparent"/>
+
+    <TextView
+        android:id="@+id/tv_setting_tos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/tv_setting_error"
+        app:layout_constraintStart_toStartOf="@id/tv_setting_subtitle_alarm"
+        android:layout_marginTop="24dp"
+
+        android:text="이용약관"
+        style="@style/Label_Medium"
+        android:textColor="@color/primary3"/>
+
+    <ImageButton
+        android:id="@+id/ib_tos"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintTop_toTopOf="@id/tv_setting_tos"
+        app:layout_constraintBottom_toBottomOf="@id/tv_setting_tos"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="12dp"
+
+        android:contentDescription="@null"
+        android:src="@drawable/ic_direaction_right_1"
+        app:tint="@color/red_gray_700"
+        android:background="@color/transparent"/>
+
+    <TextView
+        android:id="@+id/tv_setting_privacy_policy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@id/tv_setting_tos"
+        app:layout_constraintStart_toStartOf="@id/tv_setting_subtitle_alarm"
+        android:layout_marginTop="24dp"
+
+        android:text="개인정보처리방침"
+        style="@style/Label_Medium"
+        android:textColor="@color/primary3"/>
+
+    <ImageButton
+        android:id="@+id/ib_privacy_policy"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintTop_toTopOf="@id/tv_setting_privacy_policy"
+        app:layout_constraintBottom_toBottomOf="@id/tv_setting_privacy_policy"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="12dp"
+
+        android:contentDescription="@null"
+        android:src="@drawable/ic_direaction_right_1"
+        app:tint="@color/red_gray_700"
+        android:background="@color/transparent"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

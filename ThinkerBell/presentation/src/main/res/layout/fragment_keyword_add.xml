@@ -21,10 +21,8 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_back"
         style="@style/Pretendard_Text"
-        android:layout_width="wrap_content"
+        android:layout_width="64dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="20dp"
         android:background="@color/transparent"
         android:text="닫기"
         android:textColor="@color/content_secondary"

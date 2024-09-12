@@ -7,6 +7,7 @@ import com.neverland.thinkerbell.databinding.ActivityHomeBinding
 import com.neverland.thinkerbell.view.category.CategoryFragment
 import com.neverland.thinkerbell.view.home.HomeFragment
 import com.neverland.thinkerbell.view.myPage.MyPageFragment
+import com.neverland.thinkerbell.view.setting.SettingFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,6 +36,11 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
 
                 R.id.navigation_my_page -> {
                     replaceFragment(R.id.fl_home, MyPageFragment(), false)
+                    true
+                }
+
+                R.id.navigation_setting -> {
+                    replaceFragment(R.id.fl_home, SettingFragment(), false)
                     true
                 }
 
