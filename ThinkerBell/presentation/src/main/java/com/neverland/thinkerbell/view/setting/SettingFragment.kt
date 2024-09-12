@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.neverland.domain.model.keyword.Keyword
+import com.neverland.thinkerbell.BuildConfig
 import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.base.BaseFragment
 import com.neverland.thinkerbell.databinding.FragmentSettingBinding
@@ -24,7 +25,12 @@ class SettingFragment: BaseFragment<FragmentSettingBinding>() {
             setStatusBarColor(R.color.primary1, true)
         }
 
+        setVersionName()
         viewModel.fetchKeyword()
+    }
+
+    private fun setVersionName(){
+        binding.tvVersionName.text = BuildConfig.VERSION_NAME
     }
 
     override fun setObserver() {
