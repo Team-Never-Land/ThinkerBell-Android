@@ -90,7 +90,6 @@ class SettingFragment: BaseFragment<FragmentSettingBinding>() {
             ibPrivacyPolicy.setOnClickListener { openExternalBrowser("https://petite-pest-f69.notion.site/022b7a19351a418da5cf22304c7c3137") }
             ibKeyword.setOnClickListener { (requireActivity() as HomeActivity).replaceFragment(R.id.fl_home, KeywordManageFragment(), true) }
             ibError.setOnClickListener { (requireActivity() as HomeActivity).replaceFragment(R.id.fl_home, ErrorReportFragment(), true) }
-            ivHomeLogo.setOnClickListener { (requireActivity() as HomeActivity).replaceFragment(R.id.fl_home, HomeFragment(), false) }
         }
     }
 
