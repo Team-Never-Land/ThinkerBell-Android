@@ -32,4 +32,12 @@ class AlarmDataSourceImpl @Inject constructor(
     override suspend fun checkAllAlarm(ssaId: String): Response<BaseResponse<Boolean>> {
         return service.checkAllAlarm(ssaId)
     }
+
+    override suspend fun getAlarmStatus(ssaId: String): Response<BaseResponse<Boolean>> {
+        return service.getAlarmStatus(ssaId)
+    }
+
+    override suspend fun patchAlarmStatus(ssaId: String): Response<BaseResponse<Boolean>> {
+        return service.patchAlarmStatus(ssaId)
+    }
 }

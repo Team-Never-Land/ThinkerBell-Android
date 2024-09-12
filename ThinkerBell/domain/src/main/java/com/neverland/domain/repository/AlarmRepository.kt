@@ -12,4 +12,7 @@ interface AlarmRepository {
 
     suspend fun checkAllAlarm(ssaId: String): Result<Boolean>
 
+    suspend fun getAlarmStatus(ssaId: String): Result<Boolean>
+
+    suspend fun patchAlarmStatus(ssaId: String): Result<Boolean>
 }
