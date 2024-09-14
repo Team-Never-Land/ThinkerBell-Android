@@ -40,6 +40,12 @@ class AlarmNoticeFragment : BaseFragment<FragmentAlarmNoticeBinding>() {
             setRvItemClickListener(object : OnRvItemClickListener<Pair<Int, String>> {
                 override fun onClick(item: Pair<Int, String>) {
                     alarmNoticeViewModel.readAlarmNotice(item.first)
+                    // 콜백 호출 후 읽지 않은 공지가 있는지 확인
+                    val allRead = checkIfAllNoticesRead()
+                    if (allRead) {
+                        // 모든 공지를 읽었다면 뱃지 제거 로직 추가
+                        removeBadgeForKeyword()
+                    }
                     val intent = Intent(Intent.ACTION_VIEW).apply {
                         data = Uri.parse(item.second)
                     }
@@ -76,10 +82,12 @@ class AlarmNoticeFragment : BaseFragment<FragmentAlarmNoticeBinding>() {
                     // Show loading state if needed
                 }
                 is UiState.Success -> {
+                    LoggerUtil.d(state.data.size.toString())
                     noticeAdapter.submitList(state.data)
                 }
                 is UiState.Error -> {
                     // Handle error state
+                    LoggerUtil.d(state.exception.message.toString())
                 }
                 UiState.Empty -> {
 
@@ -121,4 +129,14 @@ class AlarmNoticeFragment : BaseFragment<FragmentAlarmNoticeBinding>() {
         keyword = arguments?.getString(ARG_KEYWORD) ?: ""
     }
 
+    private fun checkIfAllNoticesRead(): Boolean {
+        // 공지 리스트에서 모두 읽음 여부를 확인
+        val allNotices = noticeAdapter.currentList
+        return allNotices.all { it.viewed }
+    }
+    private fun removeBadgeForKeyword() {
+        // 모든 공지를 읽었을 때 뱃지를 제거하는 로직
+        val parentFragment = parentFragment as? AlarmFragment
+        parentFragment?.removeBadgeForKeyword(keyword)
+    }
 }

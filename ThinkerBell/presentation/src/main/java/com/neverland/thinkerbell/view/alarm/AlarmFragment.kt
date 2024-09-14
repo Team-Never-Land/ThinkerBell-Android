@@ -113,4 +113,23 @@ class AlarmFragment : BaseFragment<FragmentAlarmBinding>() {
         }
     }
 
+    fun removeBadgeForKeyword(keyword: String) {
+        val tabCount = binding.tlAlarmCategoryTab.tabCount
+
+        // 모든 탭을 순회하면서 해당 키워드의 탭을 찾음
+        for (i in 0 until tabCount) {
+            val tab = binding.tlAlarmCategoryTab.getTabAt(i)
+            val tabView = tab?.customView
+
+            // 현재 탭의 제목이 해당 키워드와 일치하는지 확인
+            val tabTitle = tabView?.findViewById<TextView>(R.id.tab_title)
+            if (tabTitle?.text == keyword) {
+                // 해당 키워드 탭의 뱃지를 제거 (redDot 숨기기)
+                val redDot = tabView.findViewById<View>(R.id.red_dot)
+                redDot.visibility = View.GONE
+                break
+            }
+        }
+    }
+
 }
