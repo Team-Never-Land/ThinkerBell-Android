@@ -5,18 +5,16 @@ import android.net.Uri
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.neverland.core.utils.LoggerUtil
-import com.neverland.domain.model.keyword.Keyword
 import com.neverland.domain.model.notice.RecentBookmarkNotice
+import com.neverland.domain.model.univ.RecentBookmarkSchedule
 import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.base.BaseFragment
 import com.neverland.thinkerbell.databinding.FragmentMyPageBinding
 import com.neverland.thinkerbell.utils.UiState
 import com.neverland.thinkerbell.view.HomeActivity
 import com.neverland.thinkerbell.view.OnRvItemClickListener
-import com.neverland.thinkerbell.view.home.HomeFragment
 import com.neverland.thinkerbell.view.myPage.adapter.MyPageFavoriteNoticeAdapter
-import com.neverland.thinkerbell.view.myPage.adapter.MyPageKeywordAdapter
+import com.neverland.thinkerbell.view.myPage.adapter.MyPageFavoriteScheduleAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,7 +22,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
 
     private val myPageviewModel: MyPageViewModel by viewModels()
     private lateinit var myPageFavoriteNoticeAdapter: MyPageFavoriteNoticeAdapter
-    private lateinit var myPageKeywordAdapter: MyPageKeywordAdapter
+    private lateinit var myPageFavoriteScheduleAdapter: MyPageFavoriteScheduleAdapter
 
     private var lastBackPressedTime: Long = 0
     private val onBackPressedCallback by lazy {
@@ -70,14 +68,14 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
             }
         }
 
-        myPageviewModel.keyword.observe(viewLifecycleOwner) {
+        myPageviewModel.recentFavoriteSchedules.observe(viewLifecycleOwner) {
             when (it) {
                 is UiState.Loading -> {
                     // Handle loading state
                 }
 
                 is UiState.Success -> {
-                    setupKeywordRecyclerView(it.data)
+                    setupFavoriteSchedulesRecyclerView(it.data)
                 }
 
                 is UiState.Error -> {
@@ -94,17 +92,9 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
     override fun onResume() {
         super.onResume()
         myPageviewModel.fetchFavoriteNotices()
-        myPageviewModel.fetchKeyword()
     }
 
-    private fun setupKeywordRecyclerView(list: List<Keyword>) {
-        myPageKeywordAdapter = MyPageKeywordAdapter(list)
-        binding.rvMyPageKeyword.apply {
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = myPageKeywordAdapter
-        }
-    }
+
 
     private fun setupFavoriteNoticesRecyclerView(list: List<RecentBookmarkNotice>) {
         myPageFavoriteNoticeAdapter =
@@ -118,9 +108,19 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
                     }
                 })
             }
-        binding.rvMyPageFavorite.apply {
+        binding.rvMyPageFavoriteNotice.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = myPageFavoriteNoticeAdapter
+        }
+    }
+
+    private fun setupFavoriteSchedulesRecyclerView(list: List<RecentBookmarkSchedule>) {
+        val favoriteSchedules = if (list.size >= 3) list.subList(0, 3) else list
+        myPageFavoriteScheduleAdapter = MyPageFavoriteScheduleAdapter(favoriteSchedules)
+
+        binding.rvMyPageFavoriteSchedule.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = myPageFavoriteScheduleAdapter
         }
     }
 
@@ -129,17 +129,17 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
         binding.ivHomeLogo.setOnClickListener {
             (requireActivity() as HomeActivity).binding.bottomNavigation.selectedItemId = R.id.navigation_home
         }
-        binding.ibPageRightFavorite.setOnClickListener {
+        binding.ibPageRightNotices.setOnClickListener {
             (requireActivity() as HomeActivity).replaceFragment(
                 R.id.fl_home,
-                FavoriteFragment(),
+                FavoriteNoticeFragment(),
                 true
             )
         }
-        binding.ibPageRightKeyword.setOnClickListener {
+        binding.ibPageRightSchedules.setOnClickListener {
             (requireActivity() as HomeActivity).replaceFragment(
                 R.id.fl_home,
-                KeywordManageFragment(),
+                FavoriteScheduleFragment(),
                 true
             )
         }
