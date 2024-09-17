@@ -1,6 +1,6 @@
 package com.neverland.domain.model.univ
 
-data class RecentAcademicSchedule(
+data class RecentBookmarkSchedule(
     val id: Int,
     val title: String,
     val startDate: String,

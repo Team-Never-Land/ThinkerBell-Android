@@ -6,7 +6,7 @@ import com.neverland.domain.model.notice.BookmarkNotice
 import com.neverland.domain.model.notice.NoticeItem
 import com.neverland.domain.model.notice.RecentBookmarkNotice
 import com.neverland.domain.model.univ.AcademicSchedule
-import com.neverland.domain.model.univ.RecentAcademicSchedule
+import com.neverland.domain.model.univ.RecentBookmarkSchedule
 import com.neverland.domain.repository.BookmarkRepository
 import javax.inject.Inject
 
@@ -184,13 +184,13 @@ class BookmarkRepositoryImpl @Inject constructor(
         )
     }
 
-    override suspend fun getRecentScheduleBookmark(ssaId: String): Result<List<RecentAcademicSchedule>> {
+    override suspend fun getRecentScheduleBookmark(ssaId: String): Result<List<RecentBookmarkSchedule>> {
         return handleResponse(
             dataNullSafe = false,
             call = { dataSource.getRecentScheduleBookmark(ssaId) },
             onSuccess = { data ->
                 data?.takeIf { it.isNotEmpty() }?.map {
-                    RecentAcademicSchedule(
+                    RecentBookmarkSchedule(
                         id = it.id,
                         title = it.title,
                         startDate = it.startDate,

@@ -1,81 +1,64 @@
 package com.neverland.thinkerbell.view.myPage
 
-import android.content.Intent
-import android.net.Uri
-import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.neverland.core.utils.LoggerUtil
+import com.google.android.material.tabs.TabLayoutMediator
 import com.neverland.domain.enums.NoticeType
 import com.neverland.domain.model.notice.NoticeItem
+import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.base.BaseFragment
-import com.neverland.thinkerbell.custom.CustomDividerDecoration
 import com.neverland.thinkerbell.databinding.FragmentFavoriteNoticeBinding
 import com.neverland.thinkerbell.utils.UiState
-import com.neverland.thinkerbell.view.OnRvItemClickListener
-import com.neverland.thinkerbell.view.myPage.adapter.FavoriteNoticeAdapter
+import com.neverland.thinkerbell.view.HomeActivity
+import com.neverland.thinkerbell.view.myPage.adapter.FavoriteNoticeVPAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FavoriteNoticeFragment(
-    private val list : List<NoticeItem>,
-    private val noticeType: NoticeType
-) : BaseFragment<FragmentFavoriteNoticeBinding>() {
-
-    private val favoriteNoticeViewModel : FavoriteNoticeViewModel by viewModels()
-    private val noticeAdapter by lazy { FavoriteNoticeAdapter(noticeType).apply {
-        setRvItemClickListener(object : OnRvItemClickListener<String> {
-            override fun onClick(item: String) {
-                val intent = Intent(Intent.ACTION_VIEW).apply {
-                    data = Uri.parse(item)
-                }
-                startActivity(intent)
-            }
-        })
-        setBookmarkClickListener(object : OnRvItemClickListener<Pair<Int, Boolean>> {
-            override fun onClick(item: Pair<Int, Boolean>) {
-                if (item.second) {
-                    favoriteNoticeViewModel.postBookmark(noticeType, item.first)
-                } else {
-                    favoriteNoticeViewModel.deleteBookmark(noticeType, item.first)
-                }
-            }
-        })
-    } }
-
+class FavoriteNoticeFragment : BaseFragment<FragmentFavoriteNoticeBinding>() {
+    private val favoriteNoticeViewModel: FavoriteNoticeViewModel by viewModels()
     override fun initView() {
+
     }
 
     override fun setObserver() {
         super.setObserver()
-        favoriteNoticeViewModel.toastState.observe(viewLifecycleOwner) {
-            when(it) {
+        favoriteNoticeViewModel.notices.observe(viewLifecycleOwner) {
+            when (it) {
                 is UiState.Loading -> {
-
+                    // Handle loading state
                 }
-                is UiState.Error -> {
 
-                }
                 is UiState.Success -> {
-                    LoggerUtil.i(it.data)
-                    showToast(it.data)
+                    setupTabLayout(it.data)
                 }
-                is UiState.Empty -> {
+
+                is UiState.Error -> {
+                    // Handle error state
+                }
+
+                UiState.Empty -> {
 
                 }
             }
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        binding.rvNoticeList.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = noticeAdapter
-            addItemDecoration(CustomDividerDecoration(requireContext(), "#898989", 0.8f))
-        }
-        noticeAdapter.submitList(list.toMutableList())
+    private fun setupTabLayout(category: Map<NoticeType, List<NoticeItem>>) {
+        val keys = category.keys.toList()
+        val adapter = FavoriteNoticeVPAdapter(this, category)
+        binding.vpFavoriteNotice.adapter = adapter
+
+        TabLayoutMediator(
+            binding.tlFavoriteCategoryTab,
+            binding.vpFavoriteNotice
+        ) { tab, position ->
+            tab.text = keys[position].tabName
+        }.attach()
     }
 
+    override fun initListener() {
+        super.initListener()
+        binding.ivHomeLogo.setOnClickListener {
+            (requireActivity() as HomeActivity).binding.bottomNavigation.selectedItemId = R.id.navigation_home
+        }
+    }
 }

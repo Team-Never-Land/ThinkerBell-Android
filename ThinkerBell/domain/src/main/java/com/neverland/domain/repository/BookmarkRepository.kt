@@ -3,7 +3,7 @@ package com.neverland.domain.repository
 import com.neverland.domain.model.notice.BookmarkNotice
 import com.neverland.domain.model.notice.RecentBookmarkNotice
 import com.neverland.domain.model.univ.AcademicSchedule
-import com.neverland.domain.model.univ.RecentAcademicSchedule
+import com.neverland.domain.model.univ.RecentBookmarkSchedule
 
 interface BookmarkRepository {
 
@@ -13,7 +13,7 @@ interface BookmarkRepository {
 
     suspend fun getRecentNoticeBookmark(ssaId: String): Result<List<RecentBookmarkNotice>>
 
-    suspend fun getRecentScheduleBookmark(ssaId: String): Result<List<RecentAcademicSchedule>>
+    suspend fun getRecentScheduleBookmark(ssaId: String): Result<List<RecentBookmarkSchedule>>
 
     suspend fun postNoticeBookmark(
         category: String,
