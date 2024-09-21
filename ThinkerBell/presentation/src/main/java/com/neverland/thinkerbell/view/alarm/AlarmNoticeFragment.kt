@@ -82,8 +82,12 @@ class AlarmNoticeFragment : BaseFragment<FragmentAlarmNoticeBinding>() {
                     // Show loading state if needed
                 }
                 is UiState.Success -> {
-                    LoggerUtil.d(state.data.size.toString())
-                    noticeAdapter.submitList(state.data)
+                    if (state.data.isNotEmpty()) {
+                        noticeAdapter.submitList(state.data)
+                    }
+                    else {
+                        binding.tvEmptyAlarm.visibility = View.VISIBLE
+                    }
                 }
                 is UiState.Error -> {
                     // Handle error state

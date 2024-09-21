@@ -7,9 +7,9 @@ data class AlarmDTO(
     val id: Int,
     @SerializedName("marked")
     val marked: Boolean,
-    @SerializedName("noticeType_english")
+    @SerializedName("noticeTypeEnglish")
     val noticeTypeEnglish: String,
-    @SerializedName("noticeType_korean")
+    @SerializedName("noticeTypeKorean")
     val noticeTypeKorean: String,
     @SerializedName("pubDate")
     val pubDate: String,
