@@ -11,7 +11,7 @@ import com.neverland.thinkerbell.databinding.ItemNoticeBinding
 import com.neverland.thinkerbell.databinding.ItemNoticeJobBinding
 import com.neverland.thinkerbell.view.OnRvItemClickListener
 
-class FavoriteNoticeAdapter(private val noticeType: NoticeType) : ListAdapter<NoticeItem, RecyclerView.ViewHolder>(noticeDiffUtil)
+class FavoriteNoticeListAdapter(private val noticeType: NoticeType) : ListAdapter<NoticeItem, RecyclerView.ViewHolder>(noticeDiffUtil)
 {
     companion object {
         private const val VIEW_TYPE_COMMON = 1

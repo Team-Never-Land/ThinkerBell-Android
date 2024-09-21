@@ -5,6 +5,8 @@ import com.neverland.data.utils.handleResponse
 import com.neverland.domain.model.notice.BookmarkNotice
 import com.neverland.domain.model.notice.NoticeItem
 import com.neverland.domain.model.notice.RecentBookmarkNotice
+import com.neverland.domain.model.univ.AcademicSchedule
+import com.neverland.domain.model.univ.RecentBookmarkSchedule
 import com.neverland.domain.repository.BookmarkRepository
 import javax.inject.Inject
 
@@ -147,6 +149,24 @@ class BookmarkRepositoryImpl @Inject constructor(
         )
     }
 
+    override suspend fun getScheduleBookmark(ssaId: String): Result<List<AcademicSchedule>> {
+        return handleResponse(
+            dataNullSafe = false,
+            call = { dataSource.getScheduleBookmark(ssaId) },
+            onSuccess = { data ->
+                data?.takeIf { it.isNotEmpty() }?.map {
+                    AcademicSchedule(
+                        id = it.id,
+                        title = it.title,
+                        startDate = it.startDate,
+                        endDate = it.endDate,
+                        marked = it.marked
+                    )
+                } ?: emptyList()
+            }
+        )
+    }
+
     override suspend fun getRecentNoticeBookmark(ssaId: String): Result<List<RecentBookmarkNotice>> {
         return handleResponse(
             dataNullSafe = false,
@@ -164,6 +184,22 @@ class BookmarkRepositoryImpl @Inject constructor(
         )
     }
 
+    override suspend fun getRecentScheduleBookmark(ssaId: String): Result<List<RecentBookmarkSchedule>> {
+        return handleResponse(
+            dataNullSafe = false,
+            call = { dataSource.getRecentScheduleBookmark(ssaId) },
+            onSuccess = { data ->
+                data?.takeIf { it.isNotEmpty() }?.map {
+                    RecentBookmarkSchedule(
+                        id = it.id,
+                        title = it.title,
+                        startDate = it.startDate,
+                        endDate = it.endDate
+                    )
+                } ?: emptyList()
+            }
+        )
+    }
 
     override suspend fun postNoticeBookmark(
         category: String,

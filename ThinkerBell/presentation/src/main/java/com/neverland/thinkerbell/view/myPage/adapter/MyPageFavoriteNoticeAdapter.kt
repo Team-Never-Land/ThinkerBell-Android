@@ -3,6 +3,7 @@ package com.neverland.thinkerbell.view.myPage.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.neverland.domain.enums.NoticeType
 import com.neverland.domain.model.notice.RecentBookmarkNotice
 import com.neverland.thinkerbell.databinding.ItemMyNoticeBinding
 import com.neverland.thinkerbell.view.OnRvItemClickListener
@@ -27,7 +28,8 @@ class MyPageFavoriteNoticeAdapter(private val notices: List<RecentBookmarkNotice
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(notice: RecentBookmarkNotice) {
-            binding.tvNoticeTitle.text = notice.title
+            val categoryKo = NoticeType.entries.find { it.enName == notice.category }?.koName?:""
+            binding.tvNoticeTitle.text = "[${categoryKo}] ${notice.title}"
             binding.tvNoticeDate.text = notice.pubDate
 
             itemView.setOnClickListener {
