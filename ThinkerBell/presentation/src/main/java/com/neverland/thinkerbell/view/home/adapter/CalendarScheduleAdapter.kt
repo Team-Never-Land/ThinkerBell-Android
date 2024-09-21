@@ -32,7 +32,9 @@ class CalendarScheduleAdapter : RecyclerView.Adapter<CalendarScheduleAdapter.Sch
     inner class ScheduleViewHolder(private val binding: ItemCalendarScheduleBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: AcademicSchedule){
-            binding.tvScheduleDate.text = item.startDate
+            val date = if (item.startDate == item.endDate) item.startDate.removeRange(0,5).replace("-",".")
+            else "${item.startDate.removeRange(0,5).replace("-",".")} ~ ${item.endDate.removeRange(0,5).replace("-",".")}"
+            binding.tvScheduleDate.text = date
             binding.tvScheduleTitle.text = item.title
 
             binding.btnFavorite.isChecked = item.marked
