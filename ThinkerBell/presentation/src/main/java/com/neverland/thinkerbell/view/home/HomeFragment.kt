@@ -1,7 +1,14 @@
 package com.neverland.thinkerbell.view.home
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
 import android.view.View
 import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.google.android.material.tabs.TabLayoutMediator
 import com.neverland.core.utils.LoggerUtil
@@ -53,6 +60,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             viewLifecycleOwner,
             onBackPressedCallback
         )
+        askNotificationPermission()
         viewModel.fetchBanners()
         viewModel.fetchRecentNotices()
         viewModel.checkAllAlarm()
@@ -191,5 +199,39 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun onDestroyView() {
         super.onDestroyView()
         onBackPressedCallback.remove()
+    }
+
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            showToast("알림 권한이 허용되었습니다.")
+        } else {
+            showToast("알림 권한이 거부되었습니다.\n설정에서 권한을 허용해주세요.")
+        }
+    }
+
+    private fun askNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+                LoggerUtil.d("POST_NOTIFICATION is Granted.")
+            } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
+                showPermissionRationale()
+            } else {
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun showPermissionRationale() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("알림 권한 필요")
+            .setMessage("알림 기능을 사용하려면 권한이 필요합니다.")
+            .setPositiveButton("권한 요청") { _, _ ->
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            }
+            .setNegativeButton("취소", null)
+            .show()
     }
 }
