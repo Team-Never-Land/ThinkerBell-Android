@@ -101,4 +101,7 @@ dependencies {
     // Hilt
     implementation(libs.hilt)
     ksp(libs.hilt.compiler)
+
+    // Update
+    implementation(libs.app.update.ktx)
 }
