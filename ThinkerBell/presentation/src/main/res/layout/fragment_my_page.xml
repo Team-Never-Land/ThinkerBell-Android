@@ -73,6 +73,7 @@
         android:layout_marginTop="34dp"
         android:layout_marginEnd="24dp"
         android:background="@null"
+        android:contentDescription="@null"
         android:src="@drawable/ic_direaction_right_1"
         app:tint="@color/red_gray_700"
         app:layout_constraintEnd_toEndOf="parent"
@@ -104,19 +105,21 @@
         android:text="즐겨찾기한 공지사항"
         android:textColor="@color/primary3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rv_my_page_favorite_schedule" />
+        app:layout_constraintTop_toBottomOf="@id/rv_my_page_favorite_schedule"
+        app:layout_goneMarginTop="190dp"/>
 
     <ImageButton
         android:id="@+id/ib_page_right_notices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
         android:layout_marginEnd="24dp"
         android:background="@null"
+        android:contentDescription="@null"
         android:src="@drawable/ic_direaction_right_1"
         app:tint="@color/red_gray_700"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rv_my_page_favorite_schedule" />
+        app:layout_constraintTop_toTopOf="@id/tv_favorite_notices"
+        app:layout_constraintBottom_toBottomOf="@id/tv_favorite_notices"/>
 
     <View
         android:id="@+id/divider"
@@ -133,6 +136,33 @@
         app:layout_constraintTop_toBottomOf="@id/divider"
         tools:itemCount="3"
         tools:listitem="@layout/item_my_notice" />
+
+    <TextView
+        android:id="@+id/tv_empty_schedule_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="즐겨찾기한 학사일정이 없습니다."
+        style="@style/Paragraph_Medium"
+        android:textColor="@color/content_secondary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_favorite_schedules"
+        app:layout_constraintBottom_toTopOf="@id/tv_favorite_notices"
+        android:layout_marginVertical="66dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_empty_notice_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="즐겨찾기한 공지사항이 없습니다."
+        style="@style/Paragraph_Medium"
+        android:textColor="@color/content_secondary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_favorite_notices"
+        android:layout_marginTop="66dp"
+        android:visibility="gone"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,5 +5,5 @@ data class AcademicSchedule(
     val title: String,
     val startDate: String,
     val endDate: String,
-    val marked: Boolean
+    var marked: Boolean
 )

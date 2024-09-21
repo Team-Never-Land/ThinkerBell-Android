@@ -2,9 +2,13 @@ package com.neverland.thinkerbell.view.myPage
 
 import android.content.Intent
 import android.net.Uri
+import android.view.View
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.neverland.domain.model.notice.RecentBookmarkNotice
 import com.neverland.domain.model.univ.RecentBookmarkSchedule
 import com.neverland.thinkerbell.R
@@ -26,7 +30,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
 
     private var lastBackPressedTime: Long = 0
     private val onBackPressedCallback by lazy {
-        object: OnBackPressedCallback(true){
+        object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 if (System.currentTimeMillis() - lastBackPressedTime < 2000) {
                     requireActivity().finish()
@@ -39,75 +43,107 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
     }
 
     override fun initView() {
-        (requireActivity() as HomeActivity).apply {
-            setStatusBarColor(R.color.primary1, true)
-            showBottomNavigation()
-        }
+        setupStatusBarAndNavigation()
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
     }
 
     override fun setObserver() {
         super.setObserver()
-        myPageviewModel.recentFavoriteNotices.observe(viewLifecycleOwner) {
-            when (it) {
-                is UiState.Loading -> {
-                    // Handle loading state
-                }
 
-                is UiState.Success -> {
-                    setupFavoriteNoticesRecyclerView(it.data)
-                }
+        observeUiState(
+            myPageviewModel.recentFavoriteNotices,
+            ::setupFavoriteNoticesRecyclerView,
+            binding.rvMyPageFavoriteNotice,
+            binding.ibPageRightNotices,
+            binding.divider,
+            binding.tvEmptyNoticeView
+        )
 
-                is UiState.Error -> {
-                    // Handle error state
-                }
-
-                UiState.Empty -> {
-
-                }
-            }
-        }
-
-        myPageviewModel.recentFavoriteSchedules.observe(viewLifecycleOwner) {
-            when (it) {
-                is UiState.Loading -> {
-                    // Handle loading state
-                }
-
-                is UiState.Success -> {
-                    setupFavoriteSchedulesRecyclerView(it.data)
-                }
-
-                is UiState.Error -> {
-                    // Handle error state
-                }
-
-                UiState.Empty -> {
-
-                }
-            }
-        }
+        observeUiState(
+            myPageviewModel.recentFavoriteSchedules,
+            ::setupFavoriteSchedulesRecyclerView,
+            binding.rvMyPageFavoriteSchedule,
+            binding.ibPageRightSchedules,
+            binding.divider2,
+            binding.tvEmptyScheduleView
+        )
     }
 
     override fun onResume() {
         super.onResume()
         myPageviewModel.fetchFavoriteNotices()
+        myPageviewModel.fetchFavoriteSchedules()
     }
 
+    private fun setupStatusBarAndNavigation() {
+        (requireActivity() as HomeActivity).apply {
+            setStatusBarColor(R.color.primary1, true)
+            showBottomNavigation()
+        }
+    }
 
+    private fun <T> observeUiState(
+        uiState: LiveData<UiState<List<T>>>,
+        setupRecyclerView: (List<T>) -> Unit,
+        recyclerView: View,
+        rightButton: View,
+        divider: View,
+        emptyView: View
+    ) {
+        uiState.observe(viewLifecycleOwner) {
+            when (it) {
+                is UiState.Loading -> {
+                    // Handle loading state
+                }
+                is UiState.Success -> {
+                    if (it.data.isNotEmpty()) {
+                        setupRecyclerView(it.data)
+                    } else {
+                        rightButton.isClickable = false
+                        rightButton.alpha = 0.5f
+                        recyclerView.visibility = View.GONE
+                        divider.visibility = View.GONE
+                        emptyView.visibility = View.VISIBLE
+                    }
+                }
+                is UiState.Error -> {
+                    // Handle error state
+                }
+                UiState.Empty -> { }
+            }
+        }
+    }
+
+    private fun <T> setupRecyclerView(
+        list: List<T>,
+        adapter: RecyclerView.Adapter<*>,
+        recyclerView: RecyclerView
+    ) {
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            if (adapter is MyPageFavoriteScheduleAdapter) {
+                myPageFavoriteScheduleAdapter = adapter.apply {
+                    if (list.size >= 3) list.subList(0, 3) else list
+                }
+            } else if (adapter is MyPageFavoriteNoticeAdapter) {
+                myPageFavoriteNoticeAdapter = adapter.apply {
+                    if (list.size >= 3) list.subList(0, 3) else list
+                }
+            }
+        }
+    }
 
     private fun setupFavoriteNoticesRecyclerView(list: List<RecentBookmarkNotice>) {
-        myPageFavoriteNoticeAdapter =
-            MyPageFavoriteNoticeAdapter(if (list.size >= 3) list.subList(0, 3) else list).apply {
-                setRvItemClickListener(object : OnRvItemClickListener<RecentBookmarkNotice> {
-                    override fun onClick(item: RecentBookmarkNotice) {
-                        val intent = Intent(Intent.ACTION_VIEW).apply {
-                            data = Uri.parse(item.url)
-                        }
-                        startActivity(intent)
+        myPageFavoriteNoticeAdapter = MyPageFavoriteNoticeAdapter(if (list.size >= 3) list.subList(0, 3) else list).apply {
+            setRvItemClickListener(object : OnRvItemClickListener<RecentBookmarkNotice> {
+                override fun onClick(item: RecentBookmarkNotice) {
+                    val intent = Intent(Intent.ACTION_VIEW).apply {
+                        data = Uri.parse(item.url)
                     }
-                })
-            }
+                    startActivity(intent)
+                }
+            })
+        }
         binding.rvMyPageFavoriteNotice.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = myPageFavoriteNoticeAdapter
@@ -115,9 +151,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
     }
 
     private fun setupFavoriteSchedulesRecyclerView(list: List<RecentBookmarkSchedule>) {
-        val favoriteSchedules = if (list.size >= 3) list.subList(0, 3) else list
-        myPageFavoriteScheduleAdapter = MyPageFavoriteScheduleAdapter(favoriteSchedules)
-
+        myPageFavoriteScheduleAdapter = MyPageFavoriteScheduleAdapter(if (list.size >= 3) list.subList(0, 3) else list)
         binding.rvMyPageFavoriteSchedule.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = myPageFavoriteScheduleAdapter
@@ -126,22 +160,17 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
 
     override fun initListener() {
         super.initListener()
+
         binding.ivHomeLogo.setOnClickListener {
             (requireActivity() as HomeActivity).binding.bottomNavigation.selectedItemId = R.id.navigation_home
         }
-        binding.ibPageRightNotices.setOnClickListener {
-            (requireActivity() as HomeActivity).replaceFragment(
-                R.id.fl_home,
-                FavoriteNoticeFragment(),
-                true
-            )
-        }
-        binding.ibPageRightSchedules.setOnClickListener {
-            (requireActivity() as HomeActivity).replaceFragment(
-                R.id.fl_home,
-                FavoriteScheduleFragment(),
-                true
-            )
+        setupNavigationIconClickListener(binding.ibPageRightNotices, FavoriteNoticeFragment())
+        setupNavigationIconClickListener(binding.ibPageRightSchedules, FavoriteScheduleFragment())
+    }
+
+    private fun setupNavigationIconClickListener(view: View, fragment: Fragment) {
+        view.setOnClickListener {
+            (requireActivity() as HomeActivity).replaceFragment(R.id.fl_home, fragment, true)
         }
     }
 
