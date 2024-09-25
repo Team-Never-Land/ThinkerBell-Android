@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primary2"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_spinner_item"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        tools:text="전체"
+        style="@style/Label_Medium"
+        android:textColor="@color/red_gray_800" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
+        android:background="@color/red_gray_400"/>
+
+</LinearLayout>
