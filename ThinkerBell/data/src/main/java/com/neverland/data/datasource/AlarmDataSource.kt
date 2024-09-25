@@ -4,7 +4,6 @@ import com.neverland.data.remote.model.BaseResponse
 import com.neverland.data.remote.model.alarm.AlarmDTO
 import retrofit2.Response
 import retrofit2.http.PATCH
-import retrofit2.http.Query
 
 interface AlarmDataSource {
     suspend fun readAlarm(

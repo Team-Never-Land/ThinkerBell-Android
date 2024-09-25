@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.neverland.core.utils.LoggerUtil
 import com.neverland.domain.enums.NoticeType
-import com.neverland.domain.model.notice.NoticeItem
 import com.neverland.domain.model.univ.AcademicSchedule
 import com.neverland.domain.usecase.bookmark.DeleteBookmarkUseCase
 import com.neverland.domain.usecase.bookmark.GetBookmarkScheduleUseCase

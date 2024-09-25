@@ -72,7 +72,7 @@ class ContactDialog(
 
         val clip = ClipData.newPlainText("${contactItem.major} 연락처", contactItem.contact)
         clipboard.setPrimaryClip(clip)
-        CustomToast.makeToast(requireContext(), "클립보드에 복사되었습니다.")
+        CustomToast.makeToast(requireContext(), "클립보드에 복사되었습니다.").show()
     }
 
     private fun callPhone() {

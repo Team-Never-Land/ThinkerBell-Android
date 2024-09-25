@@ -5,8 +5,6 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.neverland.core.utils.LoggerUtil
 import com.neverland.domain.enums.NoticeType
-import com.neverland.domain.model.univ.AcademicSchedule
-import com.neverland.domain.model.univ.BookmarkScheduleGroup
 import com.neverland.domain.model.univ.groupSchedulesByYearAndMonth
 import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.base.BaseFragment
