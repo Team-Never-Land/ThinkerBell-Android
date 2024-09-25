@@ -237,15 +237,14 @@ class CommonNoticeFragment(
                 binding.spinnerCampus.visibility = View.GONE
                 binding.groupNoticeSearchView.visibility = View.GONE
                 binding.btnBack.visibility = View.GONE
-                binding.etSearch.text.clear()
             }
             is UiState.Success -> {
                 commonNoticeAdapter.submitList(state.data)
                 binding.groupNoticeSearchView.visibility = View.VISIBLE
+                binding.tvEmptyView.visibility = View.GONE
                 binding.btnBack.visibility = View.VISIBLE
                 binding.llNoticePage.visibility = View.GONE
                 binding.tvSearchNoticeResult.text = "'${binding.etSearch.text}'이(가) 포함된 공지사항 (${state.data.size}개)"
-                binding.etSearch.text.clear()
             }
         }
     }
