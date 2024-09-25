@@ -48,7 +48,15 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
             }
         }
 
-        binding.bottomNavigation.setOnItemReselectedListener { }
+        binding.bottomNavigation.setOnItemReselectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    replaceFragment(R.id.fl_home, HomeFragment(), false)
+                }
+
+                else -> {}
+            }
+        }
     }
 
     fun hideBottomNavigation() {
