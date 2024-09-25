@@ -327,7 +327,7 @@ class CommonNoticeFragment(
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
-        binding.spinnerCampus.dropDownHorizontalOffset = -24
+        binding.spinnerCampus.dropDownHorizontalOffset = -36
         binding.spinnerCampus.dropDownVerticalOffset = 10
     }
 

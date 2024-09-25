@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import com.neverland.thinkerbell.databinding.ItemSpinnerCampusBinding
+import com.neverland.thinkerbell.databinding.ItemSpinnerCampusDropdownBinding
 
 class CampusSpinnerAdapter(
     context: Context,
@@ -35,9 +36,11 @@ class CampusSpinnerAdapter(
             return emptyView
         }
 
-        val binding = ItemSpinnerCampusBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemSpinnerCampusDropdownBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         binding.tvSpinnerItem.text = spinnerList[position]
         binding.tvSpinnerItem.textAlignment = TextView.TEXT_ALIGNMENT_CENTER
+
+        binding.divider.visibility = if(position == count-1) View.GONE else View.VISIBLE
 
         return binding.root
     }
