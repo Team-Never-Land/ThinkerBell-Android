@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.neverland.domain.model.keyword.Keyword
-import com.neverland.domain.model.notice.RecentBookmarkNotice
-import com.neverland.domain.usecase.bookmark.GetRecentBookmarkNoticeUseCase
 import com.neverland.domain.usecase.keyword.DeleteKeywordUseCase
 import com.neverland.domain.usecase.keyword.GetKeywordUseCase
 import com.neverland.domain.usecase.keyword.PostKeywordUseCase

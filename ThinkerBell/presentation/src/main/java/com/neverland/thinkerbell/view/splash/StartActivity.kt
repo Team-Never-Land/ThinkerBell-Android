@@ -3,10 +3,8 @@ package com.neverland.thinkerbell.view.splash
 import android.content.Intent
 import androidx.activity.viewModels
 import com.google.firebase.messaging.FirebaseMessaging
-import com.neverland.core.utils.LoggerUtil
 import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.base.BaseActivity
-import com.neverland.thinkerbell.base.ThinkerBellApplication
 import com.neverland.thinkerbell.databinding.ActivityStartBinding
 import com.neverland.thinkerbell.utils.UiState
 import com.neverland.thinkerbell.view.HomeActivity
