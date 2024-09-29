@@ -1,5 +1,6 @@
 package com.neverland.thinkerbell.view.home.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,7 @@ class CalendarMonthAdapter(
         return Month(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: Month, position: Int) {
         // 리사이클러뷰 초기화
         val listLayout: RecyclerView = holder.view.findViewById(R.id.rv_month)
@@ -85,6 +87,7 @@ class CalendarMonthAdapter(
         return Int.MAX_VALUE
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newList: List<AcademicSchedule>) {
         scheduleList = newList
         notifyDataSetChanged()
