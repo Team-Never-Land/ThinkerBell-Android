@@ -23,15 +23,16 @@ class HomeCalendarViewModel @Inject constructor(
     private val deleteBookmarkUseCase: DeleteBookmarkUseCase
 ): ViewModel() {
 
-
     private val _uiState = MutableLiveData<UiState<List<AcademicSchedule>>>(UiState.Loading)
     val uiState: LiveData<UiState<List<AcademicSchedule>>> get() = _uiState
 
-    fun fetchData(month: Int) {
+    // 연도와 월을 기반으로 데이터를 가져오는 함수로 수정
+    fun fetchData(year: Int, month: Int) {
         _uiState.value = UiState.Loading
 
         viewModelScope.launch {
-            getAcademicScheduleUseCase.invoke(month, ssaId = application.getAndroidId())
+            // UseCase에 연도와 월을 함께 전달하도록 수정
+            getAcademicScheduleUseCase.invoke(year, month, ssaId = application.getAndroidId())
                 .onSuccess { schedules ->
                     _uiState.value = UiState.Success(schedules)
                 }
@@ -44,7 +45,7 @@ class HomeCalendarViewModel @Inject constructor(
     private val _toastState = MutableLiveData<UiState<String>>(UiState.Loading)
     val toastState: LiveData<UiState<String>> get() = _toastState
 
-    fun postBookmark(noticeId: Int){
+    fun postBookmark(noticeId: Int) {
         val category = NoticeType.ACADEMIC_SCHEDULE
 
         viewModelScope.launch {
@@ -61,11 +62,10 @@ class HomeCalendarViewModel @Inject constructor(
                     LoggerUtil.d("[${category.koName}] 즐겨찾기 성공")
                     _toastState.value = UiState.Success("즐겨찾기 되었습니다")
                 }
-
         }
     }
 
-    fun deleteBookmark(noticeId: Int){
+    fun deleteBookmark(noticeId: Int) {
         val category = NoticeType.ACADEMIC_SCHEDULE
 
         viewModelScope.launch {
