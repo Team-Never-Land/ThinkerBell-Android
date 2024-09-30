@@ -33,10 +33,10 @@ class UnivRepositoryImpl @Inject constructor(
         )
     }
 
-    override suspend fun getMonthlyAcademicSchedule(month: Int, ssaId: String): Result<List<AcademicSchedule>> {
+    override suspend fun getMonthlyAcademicSchedule(year: Int, month: Int, ssaId: String): Result<List<AcademicSchedule>> {
         return handleResponse(
             dataNullSafe = false,
-            call = { datasource.getMonthlyAcademicSchedule(month, ssaId) },
+            call = { datasource.getMonthlyAcademicSchedule(year, month, ssaId) },
             onSuccess = { data ->
                 data?.map { AcademicSchedule(id = it.id, title = it.title, marked = it.marked, startDate = it.startDate, endDate = it.endDate) } ?: emptyList()
             }

@@ -14,6 +14,7 @@ interface UnivDataSource {
     suspend fun getDeptContact(): Response<BaseResponse<List<DeptContactResDTO>>>
 
     suspend fun getMonthlyAcademicSchedule(
+        year: Int,
         month: Int,
         ssaId: String
     ): Response<BaseResponse<List<AcademicScheduleResDTO>>>

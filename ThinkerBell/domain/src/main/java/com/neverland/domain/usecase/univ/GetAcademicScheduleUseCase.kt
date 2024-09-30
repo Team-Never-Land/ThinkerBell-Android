@@ -8,7 +8,7 @@ class GetAcademicScheduleUseCase @Inject constructor(
     private val repository: UnivRepository
 ) {
 
-    suspend operator fun invoke(month: Int, ssaId: String): Result<List<AcademicSchedule>> {
-        return repository.getMonthlyAcademicSchedule(month, ssaId)
+    suspend operator fun invoke(year: Int, month: Int, ssaId: String): Result<List<AcademicSchedule>> {
+        return repository.getMonthlyAcademicSchedule(year, month, ssaId)
     }
 }

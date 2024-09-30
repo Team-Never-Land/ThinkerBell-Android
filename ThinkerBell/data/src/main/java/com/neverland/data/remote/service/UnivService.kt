@@ -18,6 +18,7 @@ interface UnivService {
 
     @GET("/api/academic-schedule/monthly")
     suspend fun getMonthlyAcademicSchedule(
+        @Query("year") year: Int,
         @Query("month") month: Int,
         @Query("ssaid") ssaId: String
     ): Response<BaseResponse<List<AcademicScheduleResDTO>>>

@@ -22,10 +22,11 @@ class UnivDataSourceImpl @Inject constructor(
     }
 
     override suspend fun getMonthlyAcademicSchedule(
+        year: Int,
         month: Int,
         ssaId: String
     ): Response<BaseResponse<List<AcademicScheduleResDTO>>> {
-        return service.getMonthlyAcademicSchedule(month = month, ssaId = ssaId)
+        return service.getMonthlyAcademicSchedule(year= year, month = month, ssaId = ssaId)
     }
 
     override suspend fun getBanner(): Response<BaseResponse<List<BannerResDTO>>> {
