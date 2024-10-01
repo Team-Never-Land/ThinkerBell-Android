@@ -35,6 +35,13 @@ class FavoriteScheduleFragment : BaseFragment<FragmentFavoriteScheduleBinding>()
                 }
 
                 is UiState.Success -> {
+                    // 연도 리스트를 오름차순으로 정렬
+                    yearList = groupSchedulesByYearAndMonth(it.data)
+                        .map { scheduleGroup -> scheduleGroup.year }
+                        .toMutableSet()
+                        .sorted() // 오름차순으로 정렬
+                        .toMutableSet()
+
                     groupSchedulesByYearAndMonth(it.data).forEach { yearList.add(it.year) }
                     val currentYear = Calendar.getInstance().get(Calendar.YEAR)
 
