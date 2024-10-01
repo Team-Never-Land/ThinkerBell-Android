@@ -17,12 +17,12 @@ class MyPageFavoriteScheduleAdapter(private val schedules: List<RecentBookmarkSc
 
         fun bind(schedule: RecentBookmarkSchedule) {
             val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            val outputFormat = SimpleDateFormat("MM.dd", Locale.getDefault())
+            val outputFormat = SimpleDateFormat("yyyy.MM.dd", Locale.getDefault())
 
             try {
                 val date = inputFormat.parse(schedule.startDate)
                 val formattedDate = date?.let { outputFormat.format(it) }
-                binding.tvScheduleDate.text = formattedDate // 월.일 형식으로 변환
+                binding.tvScheduleDate.text = formattedDate // 연.월.일 형식으로 변환
             } catch (e: Exception) {
                 e.printStackTrace()
                 binding.tvScheduleDate.text = schedule.startDate // 파싱 실패 시 원본 날짜 표시
