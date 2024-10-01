@@ -93,16 +93,19 @@ class FavoriteScheduleFragment : BaseFragment<FragmentFavoriteScheduleBinding>()
     }
 
     private fun hideArrowButton() {
-        LoggerUtil.d(currentIndex.toString())
-        if (yearList.size-1 < currentIndex!!+1) {
-            binding.ibRightArrow.visibility = View.GONE
-        } else {
-            binding.ibRightArrow.visibility = View.VISIBLE
-        }
-        if (yearList.size-1 > currentIndex!!-1) {
+        LoggerUtil.d("${yearList.size}, ${currentIndex}")
+        // 현재 인덱스가 0일 경우 왼쪽 화살표 숨김, 아니면 보임
+        if (currentIndex == 0) {
             binding.ibLeftArrow.visibility = View.GONE
         } else {
             binding.ibLeftArrow.visibility = View.VISIBLE
+        }
+
+        // 현재 인덱스가 마지막 인덱스일 경우 오른쪽 화살표 숨김, 아니면 보임
+        if (currentIndex == yearList.size - 1) {
+            binding.ibRightArrow.visibility = View.GONE
+        } else {
+            binding.ibRightArrow.visibility = View.VISIBLE
         }
     }
 
@@ -112,15 +115,16 @@ class FavoriteScheduleFragment : BaseFragment<FragmentFavoriteScheduleBinding>()
             (requireActivity() as HomeActivity).binding.bottomNavigation.selectedItemId = R.id.navigation_home
         }
         binding.ibLeftArrow.setOnClickListener {
-            favoriteScheduleAdapter.setList(year = yearList.elementAt(currentIndex!!-1))
-            binding.tvYear.text = yearList.elementAt(currentIndex!!-1).toString()
-            currentIndex = currentIndex!!-1
+            currentIndex = currentIndex!! - 1
+            favoriteScheduleAdapter.setList(year = yearList.elementAt(currentIndex!!))
+            binding.tvYear.text = yearList.elementAt(currentIndex!!).toString()
             hideArrowButton()
         }
+
         binding.ibRightArrow.setOnClickListener {
-            favoriteScheduleAdapter.setList(year = yearList.elementAt(currentIndex!!+1))
-            binding.tvYear.text = yearList.elementAt(currentIndex!!+1).toString()
-            currentIndex = currentIndex!!+1
+            currentIndex = currentIndex!! + 1
+            favoriteScheduleAdapter.setList(year = yearList.elementAt(currentIndex!!))
+            binding.tvYear.text = yearList.elementAt(currentIndex!!).toString()
             hideArrowButton()
         }
     }
