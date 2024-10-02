@@ -73,40 +73,16 @@ class ErrorReportFragment : BaseFragment<FragmentErrorReportBinding>() {
                 val len = s?.length ?: 0
                 if (len >= 10) {
                     binding.tvReportComment.visibility = View.GONE
-
-                    binding.btnSendReport.setTextColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.primary2
-                        )
-                    )
-                    binding.btnSendReport.background = ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.shape_keyword_add_button_bg
-                    )
-                    binding.btnSendReport.isClickable = true
-                } else {
-                    binding.tvReportComment.visibility = View.VISIBLE
-
-                    binding.btnSendReport.setTextColor(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.red_gray_100
-                        )
-                    )
-                    binding.btnSendReport.background = ColorDrawable(
-                        ContextCompat.getColor(
-                            requireContext(),
-                            R.color.red_gray_300
-                        )
-                    )
-                    binding.btnSendReport.isClickable = false
                 }
             }
         })
 
         binding.btnSendReport.setOnClickListener {
-            viewModel.postErrorReport(binding.etReport.text.toString())
+            if(binding.etReport.text.length < 10) {
+                binding.tvReportComment.visibility = View.VISIBLE
+            } else {
+                viewModel.postErrorReport(binding.etReport.text.toString())
+            }
         }
     }
 }
