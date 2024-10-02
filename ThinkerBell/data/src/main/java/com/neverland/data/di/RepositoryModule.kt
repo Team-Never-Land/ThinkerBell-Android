@@ -7,6 +7,7 @@ import com.neverland.data.repository.NoticeRepositoryImpl
 import com.neverland.data.repository.ReportRepositoryImpl
 import com.neverland.data.repository.UnivRepositoryImpl
 import com.neverland.data.repository.UserRepositoryImpl
+import com.neverland.data.repository.VersionRepositoryImpl
 import com.neverland.domain.repository.AlarmRepository
 import com.neverland.domain.repository.BookmarkRepository
 import com.neverland.domain.repository.KeywordRepository
@@ -14,6 +15,7 @@ import com.neverland.domain.repository.NoticeRepository
 import com.neverland.domain.repository.ReportRepository
 import com.neverland.domain.repository.UnivRepository
 import com.neverland.domain.repository.UserRepository
+import com.neverland.domain.repository.VersionRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -51,4 +53,8 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindsReportRepository(impl: ReportRepositoryImpl): ReportRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindsVersionRepository(impl: VersionRepositoryImpl): VersionRepository
 }

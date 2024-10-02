@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="304dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_dialog_contact_bg"
+    android:paddingHorizontal="24dp"
+    android:paddingVertical="20dp">
+
+    <TextView
+        android:id="@+id/tv_dialog_update_title"
+        style="@style/Heading_Medium"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+
+        android:breakStrategy="high_quality"
+        android:gravity="center"
+        android:text="알림"
+        android:textColor="@color/primary3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_dialog_update_comment"
+        style="@style/Paragraph_Medium"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+
+        android:gravity="center"
+        android:textColor="@color/primary3"
+        app:layout_constraintTop_toBottomOf="@id/tv_dialog_update_title"
+        android:text="새로운 버전이 있습니다.\n앱을 업데이트 후 사용해주세요." />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_dialog_update"
+        style="@style/Label_Medium"
+        android:layout_width="120dp"
+
+        android:layout_height="42dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_dialog_contact_btn_bg"
+        android:backgroundTint="@color/primary1"
+        android:elevation="0dp"
+
+        android:stateListAnimator="@null"
+        android:text="업데이트"
+        android:textColor="@color/primary2"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_dialog_update_comment" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
