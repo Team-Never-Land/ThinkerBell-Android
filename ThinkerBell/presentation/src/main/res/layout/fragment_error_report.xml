@@ -75,10 +75,11 @@
         android:gravity="top|start"
         style="@style/Paragraph_Medium"
         android:textColor="@color/primary3"
-        android:hint="어떤 오류가 발생했나요?"
+        android:hint="10자 이상, 200자 이하로 입력해주세요."
         android:textColorHint="@color/red_gray_400"
 
-        android:background="@drawable/shape_error_report_bg"/>
+        android:background="@drawable/shape_error_report_bg"
+        tools:ignore="Autofill" />
 
     <TextView
         android:id="@+id/tv_report_comment"
@@ -91,7 +92,8 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
 
-        tools:text="열 글자 이상 입력해주세요."
+        android:visibility="gone"
+        android:text="열 글자 이상 입력해주세요."
         style="@style/Paragraph_Small"
         android:textColor="#FF0000" />
 
@@ -100,9 +102,9 @@
         style="@style/Heading_Medium"
         android:layout_width="178dp"
         android:layout_height="56dp"
-        android:background="@color/red_gray_300"
+        android:background="@drawable/shape_keyword_add_button_bg"
         android:text="신고하기"
-        android:textColor="@color/red_gray_100"
+        android:textColor="@color/primary2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
