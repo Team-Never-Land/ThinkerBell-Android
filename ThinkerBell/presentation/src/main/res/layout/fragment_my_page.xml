@@ -85,7 +85,8 @@
         android:layout_height="1dp"
         android:layout_marginTop="22dp"
         android:background="@color/red_gray_700"
-        app:layout_constraintTop_toBottomOf="@id/tv_favorite_schedules" />
+        app:layout_constraintTop_toBottomOf="@id/tv_favorite_schedules"
+        android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_my_page_favorite_schedule"
@@ -127,7 +128,8 @@
         android:layout_height="1dp"
         android:layout_marginTop="22dp"
         android:background="@color/red_gray_700"
-        app:layout_constraintTop_toBottomOf="@id/tv_favorite_notices" />
+        app:layout_constraintTop_toBottomOf="@id/tv_favorite_notices"
+        android:visibility="gone"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_my_page_favorite_notice"
