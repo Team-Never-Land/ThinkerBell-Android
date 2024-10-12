@@ -24,7 +24,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
 
-    private val myPageviewModel: MyPageViewModel by viewModels()
+    private val myPageViewModel: MyPageViewModel by viewModels()
     private lateinit var myPageFavoriteNoticeAdapter: MyPageFavoriteNoticeAdapter
     private lateinit var myPageFavoriteScheduleAdapter: MyPageFavoriteScheduleAdapter
 
@@ -51,7 +51,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
         super.setObserver()
 
         observeUiState(
-            myPageviewModel.recentFavoriteNotices,
+            myPageViewModel.recentFavoriteNotices,
             ::setupFavoriteNoticesRecyclerView,
             binding.rvMyPageFavoriteNotice,
             binding.ibPageRightNotices,
@@ -60,7 +60,7 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
         )
 
         observeUiState(
-            myPageviewModel.recentFavoriteSchedules,
+            myPageViewModel.recentFavoriteSchedules,
             ::setupFavoriteSchedulesRecyclerView,
             binding.rvMyPageFavoriteSchedule,
             binding.ibPageRightSchedules,
@@ -71,8 +71,8 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
 
     override fun onResume() {
         super.onResume()
-        myPageviewModel.fetchFavoriteNotices()
-        myPageviewModel.fetchFavoriteSchedules()
+        myPageViewModel.fetchFavoriteNotices()
+        myPageViewModel.fetchFavoriteSchedules()
     }
 
     private fun setupStatusBarAndNavigation() {
@@ -112,25 +112,6 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
                     // Handle error state
                 }
                 UiState.Empty -> { }
-            }
-        }
-    }
-
-    private fun <T> setupRecyclerView(
-        list: List<T>,
-        adapter: RecyclerView.Adapter<*>,
-        recyclerView: RecyclerView
-    ) {
-        recyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            if (adapter is MyPageFavoriteScheduleAdapter) {
-                myPageFavoriteScheduleAdapter = adapter.apply {
-                    if (list.size >= 3) list.subList(0, 3) else list
-                }
-            } else if (adapter is MyPageFavoriteNoticeAdapter) {
-                myPageFavoriteNoticeAdapter = adapter.apply {
-                    if (list.size >= 3) list.subList(0, 3) else list
-                }
             }
         }
     }
