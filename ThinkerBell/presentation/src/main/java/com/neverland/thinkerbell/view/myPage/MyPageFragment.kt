@@ -97,6 +97,8 @@ class MyPageFragment : BaseFragment<FragmentMyPageBinding>() {
                 }
                 is UiState.Success -> {
                     if (it.data.isNotEmpty()) {
+                        divider.visibility = View.VISIBLE
+                        emptyView.visibility = View.GONE
                         setupRecyclerView(it.data)
                     } else {
                         rightButton.isClickable = false
