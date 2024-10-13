@@ -15,9 +15,10 @@ class NoticeDataSourceImpl @Inject constructor(
 ): NoticeDataSource {
     override suspend fun searchNotices(
         keyword: String,
-        ssaId: String
+        ssaId: String,
+        noticeType: String
     ): Response<BaseResponse<SearchNoticeResultDTO>> {
-        return service.searchNotices(keyword = keyword, ssaId = ssaId)
+        return service.searchNotices(keyword = keyword, ssaId = ssaId, noticeType = noticeType)
     }
 
     override suspend fun getRecentNotices(ssaId: String): Response<BaseResponse<SearchNoticeResultDTO>> {

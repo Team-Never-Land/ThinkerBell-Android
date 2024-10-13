@@ -5,6 +5,7 @@ import com.neverland.data.remote.model.PageableResponse
 import com.neverland.data.remote.model.notice.CommonNoticeDTO
 import com.neverland.data.remote.model.notice.JobTrainingNoticeDTO
 import com.neverland.data.remote.model.notice.SearchNoticeResultDTO
+import com.neverland.domain.enums.NoticeType
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -14,7 +15,8 @@ interface NoticeService {
     @GET("/api/notices/search")
     suspend fun searchNotices(
         @Query("keyword") keyword: String,
-        @Query("ssaid") ssaId: String
+        @Query("ssaid") ssaId: String,
+        @Query("noticeType") noticeType: String
     ): Response<BaseResponse<SearchNoticeResultDTO>>
 
     @GET("/api/notices/recent")

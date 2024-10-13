@@ -418,7 +418,7 @@ class NoticeRepositoryImpl @Inject constructor(
         ssaId: String
     ): Result<List<NoticeItem>> {
         return handleResponse(
-            call = { datasource.searchNotices(keyword = keyword, ssaId = ssaId) },
+            call = { datasource.searchNotices(keyword = keyword, ssaId = ssaId, noticeType = noticeType.enName) },
             onSuccess = { data ->
                 val notices = when (noticeType) {
                     NoticeType.NORMAL_NOTICE -> data?.normalNotices
@@ -507,7 +507,7 @@ class NoticeRepositoryImpl @Inject constructor(
         ssaId: String
     ): Result<AllNotices> {
         return handleResponse(
-            call = { datasource.searchNotices(keyword = keyword, ssaId = ssaId) },
+            call = { datasource.searchNotices(keyword = keyword, ssaId = ssaId, noticeType = "AllNotice") },
             onSuccess = { data ->
                 AllNotices(
                     safetyNotice = data!!.safetyNotices?.map {
