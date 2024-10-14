@@ -24,6 +24,7 @@ class AlarmRepositoryImpl @Inject constructor(
                 data?.map {
                     Alarm(
                         id = it.id,
+                        categoryId = it.categoryId,
                         title = it.title,
                         noticeTypeKorean = it.noticeTypeKorean,
                         noticeTypeEnglish = it.noticeTypeEnglish,

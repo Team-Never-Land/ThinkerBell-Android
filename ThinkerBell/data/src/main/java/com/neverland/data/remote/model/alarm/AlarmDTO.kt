@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName
 data class AlarmDTO(
     @SerializedName("id")
     val id: Int,
+    @SerializedName("categoryId")
+    val categoryId: Int,
     @SerializedName("marked")
     val marked: Boolean,
     @SerializedName("noticeTypeEnglish")
