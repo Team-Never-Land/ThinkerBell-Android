@@ -14,11 +14,11 @@ data class AlarmDTO(
     @SerializedName("noticeTypeKorean")
     val noticeTypeKorean: String,
     @SerializedName("pubDate")
-    val pubDate: String,
+    val pubDate: String?,
     @SerializedName("title")
     val title: String,
     @SerializedName("url")
-    val url: String,
+    val url: String?,
     @SerializedName("viewed")
     val viewed: Boolean
 )

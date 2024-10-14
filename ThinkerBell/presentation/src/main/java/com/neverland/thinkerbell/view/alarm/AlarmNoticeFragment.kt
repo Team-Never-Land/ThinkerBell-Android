@@ -91,7 +91,7 @@ class AlarmNoticeFragment : BaseFragment<FragmentAlarmNoticeBinding>() {
                 }
                 is UiState.Error -> {
                     // Handle error state
-                    LoggerUtil.d(state.exception.message.toString())
+                    LoggerUtil.e("$keyword ${state.exception.message}")
                 }
                 UiState.Empty -> {
 
