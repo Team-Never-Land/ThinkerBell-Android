@@ -5,7 +5,6 @@ import com.neverland.data.remote.model.PageableResponse
 import com.neverland.data.remote.model.notice.CommonNoticeDTO
 import com.neverland.data.remote.model.notice.JobTrainingNoticeDTO
 import com.neverland.data.remote.model.notice.SearchNoticeResultDTO
-import com.neverland.domain.enums.NoticeType
 import retrofit2.Response
 
 interface NoticeDataSource {

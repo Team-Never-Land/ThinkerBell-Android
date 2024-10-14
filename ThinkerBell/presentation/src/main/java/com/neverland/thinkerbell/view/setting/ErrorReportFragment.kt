@@ -1,12 +1,10 @@
 package com.neverland.thinkerbell.view.setting
 
-import android.graphics.drawable.ColorDrawable
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import com.neverland.thinkerbell.R
 import com.neverland.thinkerbell.base.BaseFragment

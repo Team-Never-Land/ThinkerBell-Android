@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.neverland.domain.model.notice.RecentBookmarkNotice
 import com.neverland.domain.model.univ.RecentBookmarkSchedule
 import com.neverland.thinkerbell.R

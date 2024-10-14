@@ -1,9 +1,6 @@
 package com.neverland.thinkerbell.view.home
 
 import android.content.ActivityNotFoundException
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -14,10 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import androidx.fragment.app.DialogFragment
-import com.neverland.domain.model.univ.DeptContact
 import com.neverland.thinkerbell.BuildConfig
-import com.neverland.thinkerbell.custom.CustomToast
-import com.neverland.thinkerbell.databinding.DialogContactBinding
 import com.neverland.thinkerbell.databinding.DialogForceUpdateBinding
 import com.neverland.thinkerbell.utils.DisplayUtils
 
