@@ -8,7 +8,6 @@ import com.neverland.data.remote.service.ReportService
 import com.neverland.data.remote.service.UnivService
 import com.neverland.data.remote.service.UserService
 import com.neverland.data.remote.service.VersionService
-import com.neverland.domain.repository.VersionRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

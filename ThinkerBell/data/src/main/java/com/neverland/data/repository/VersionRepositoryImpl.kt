@@ -1,10 +1,7 @@
 package com.neverland.data.repository
 
-import com.neverland.data.datasource.AlarmDataSource
 import com.neverland.data.datasource.VersionDataSource
 import com.neverland.data.utils.handleResponse
-import com.neverland.domain.model.alarm.Alarm
-import com.neverland.domain.repository.AlarmRepository
 import com.neverland.domain.repository.VersionRepository
 import javax.inject.Inject
 

@@ -3,7 +3,6 @@ package com.neverland.thinkerbell.view.myPage.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.neverland.core.utils.LoggerUtil
 import com.neverland.domain.model.univ.AcademicSchedule
 import com.neverland.domain.model.univ.BookmarkScheduleGroup
 import com.neverland.domain.model.univ.groupSchedulesByYearAndMonth
@@ -15,6 +14,8 @@ class FavoriteScheduleAdapter(private var scheduleGroups: List<BookmarkScheduleG
     private var allItems: List<BookmarkScheduleGroup> = listOf()
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private val unmarkedItem = mutableListOf<Int>()
 
     companion object {
         private const val VIEW_TYPE_HEADER = 0
@@ -103,8 +104,14 @@ class FavoriteScheduleAdapter(private var scheduleGroups: List<BookmarkScheduleG
             val date = if (schedule.startDate == schedule.endDate) schedule.startDate.removeRange(0,5).replace("-",".")
                 else "${schedule.startDate.removeRange(0,5).replace("-",".")} ~ ${schedule.endDate.removeRange(0,5).replace("-",".")}"
             binding.tvScheduleDate.text = date
-            binding.btnFavorite.isChecked = schedule.marked
+            binding.btnFavorite.isChecked = !unmarkedItem.contains(schedule.id)
             binding.btnFavorite.setOnClickListener {
+                if (unmarkedItem.contains(schedule.id)) {
+                    unmarkedItem.remove(schedule.id)
+                } else {
+                    unmarkedItem.add(schedule.id)
+                }
+
                 bookmarkClickListener.onClick(Pair(schedule.id, binding.btnFavorite.isChecked))
             }
         }
@@ -117,21 +124,18 @@ class FavoriteScheduleAdapter(private var scheduleGroups: List<BookmarkScheduleG
     }
 
     fun setList(newList: List<AcademicSchedule> = listOf(), year: Int) {
-        LoggerUtil.d("${newList}, ${year}")
         // 데이터를 월별로 그룹화
         if (allItems.isEmpty()) {
             allItems = groupSchedulesByYearAndMonth(newList)
         }
-        LoggerUtil.d(allItems.toString())
         // 월별로 그룹을 내림차순 정렬
         val sortedScheduleGroups = allItems.filter { it.year == year }.sortedByDescending { group ->
             // "9월"과 같은 문자열에서 숫자를 추출하여 정렬
             group.month
         }
         sortedScheduleGroups.map { it.schedules.map { it.marked = true } }
-        LoggerUtil.d(sortedScheduleGroups.toString())
         scheduleGroups = sortedScheduleGroups
-        LoggerUtil.d(scheduleGroups.toString())
         notifyDataSetChanged()
     }
+
 }
