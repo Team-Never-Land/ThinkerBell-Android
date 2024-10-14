@@ -59,9 +59,9 @@ class AlarmNoticeFragment : BaseFragment<FragmentAlarmNoticeBinding>() {
                     }?: NoticeType.NORMAL_NOTICE
                     LoggerUtil.d(item.first.noticeTypeEnglish)
                     if (item.second) {
-                        alarmNoticeViewModel.postBookmark(noticeType, item.first.id)
+                        alarmNoticeViewModel.postBookmark(noticeType, item.first.categoryId)
                     } else {
-                        alarmNoticeViewModel.deleteBookmark(noticeType, item.first.id)
+                        alarmNoticeViewModel.deleteBookmark(noticeType, item.first.categoryId)
                     }
                 }
             })
@@ -91,7 +91,7 @@ class AlarmNoticeFragment : BaseFragment<FragmentAlarmNoticeBinding>() {
                 }
                 is UiState.Error -> {
                     // Handle error state
-                    LoggerUtil.d(state.exception.message.toString())
+                    LoggerUtil.e("$keyword ${state.exception.message}")
                 }
                 UiState.Empty -> {
 

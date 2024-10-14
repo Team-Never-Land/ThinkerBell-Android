@@ -65,7 +65,7 @@ class AlarmNoticeAdapter : ListAdapter<Alarm, AlarmNoticeAdapter.NoticeViewHolde
 
     class DiffCallback : DiffUtil.ItemCallback<Alarm>() {
         override fun areItemsTheSame(oldItem: Alarm, newItem: Alarm): Boolean {
-            return oldItem.url == newItem.url
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Alarm, newItem: Alarm): Boolean {

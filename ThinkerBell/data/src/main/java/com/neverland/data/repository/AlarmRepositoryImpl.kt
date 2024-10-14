@@ -24,12 +24,13 @@ class AlarmRepositoryImpl @Inject constructor(
                 data?.map {
                     Alarm(
                         id = it.id,
+                        categoryId = it.categoryId,
                         title = it.title,
                         noticeTypeKorean = it.noticeTypeKorean,
                         noticeTypeEnglish = it.noticeTypeEnglish,
                         viewed = it.viewed,
-                        pubDate = it.pubDate,
-                        url = it.url,
+                        pubDate = it.pubDate?:"",
+                        url = it.url?:"https://www.mju.ac.kr/mjukr/index.do",
                         marked = it.marked
                     )
                 } ?: emptyList()
