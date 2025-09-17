@@ -22,6 +22,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>() {
     override fun initListener() {
         super.initListener()
 
+        binding.bottomNavigation.setOnApplyWindowInsetsListener(null)
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_home -> {

@@ -13,20 +13,20 @@ val properties = gradleLocalProperties(rootDir, providers)
 
 android {
     namespace = "com.neverland.thinkerbell"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.neverland.thinkerbell"
         minSdk = 29
-        targetSdk = 34
+        targetSdk = 36
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        versionName = "0.0.2"
+        versionName = "1.0.1"
         versionCode = if (project.hasProperty("versionCode")) {
             project.property("versionCode").toString().toInt()
         } else {
-            2
+            11
         }
     }
 
@@ -50,7 +50,7 @@ android {
     buildTypes {
         release {
             signingConfig = signingConfigs.getByName("release")
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
