@@ -22,11 +22,11 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        versionName = "1.0.1"
+        versionName = "1.3.0"
         versionCode = if (project.hasProperty("versionCode")) {
             project.property("versionCode").toString().toInt()
         } else {
-            11
+            13
         }
     }
 
